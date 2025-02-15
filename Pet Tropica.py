@@ -25,7 +25,7 @@ BROWN_FLR = (92, 64, 51)
 
 #FOR CLOCK
 next_step_time = 0
-time_interval = 500
+time_interval = 5000
 
 pygame.init()
 
@@ -75,10 +75,11 @@ while not done:
     # --- Game logic should go here
     # -- CLOCK --
   
-    current_time = pygame.time.get_ticks()
+    current_time = (pygame.time.get_ticks())*1000
     if current_time > next_step_time:
         next_step_time += time_interval
         #insert rectangle function to decrease
+        print(current_time)
 
 
  
