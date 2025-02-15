@@ -16,6 +16,9 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+LIGHT_BLUE = (136, 200, 255)
+DARK_BLUE = (88, 177, 255)
+BROWN_FLR = (92, 64, 51)
  
 pygame.init()
  
@@ -23,7 +26,7 @@ pygame.init()
 size = (480, 640)
 screen = pygame.display.set_mode(size)
  
-pygame.display.set_caption("My Game")
+pygame.display.set_caption("Pet Tropica")
  
 # Loop until the user clicks the close button.
 done = False
@@ -47,10 +50,29 @@ while not done:
  
     # If you want a background image, replace this clear with blit'ing the
     # background image.
-    screen.fill(WHITE)
+    screen.fill(LIGHT_BLUE)
  
     # --- Drawing code should go here
- 
+
+    #Background
+    pygame.draw.rect(screen, DARK_BLUE, [0, 0, 40, 640])
+    pygame.draw.rect(screen, DARK_BLUE, [80, 0, 40, 640])
+    pygame.draw.rect(screen, DARK_BLUE, [160, 0, 40, 640])
+    pygame.draw.rect(screen, DARK_BLUE, [240, 0, 40, 640])
+    pygame.draw.rect(screen, DARK_BLUE, [320, 0, 40, 640])
+    pygame.draw.rect(screen, DARK_BLUE, [400, 0, 40, 640])
+
+    pygame.draw.line(screen, LIGHT_BLUE, [0, 266],[480, 266], 3)
+    pygame.draw.line(screen, DARK_BLUE, [0, 272],[480, 272], 9)
+    pygame.draw.line(screen, LIGHT_BLUE, [0, 278],[480, 278], 3)
+
+    pygame.draw.rect(screen, BROWN_FLR, [0, 280, 480, 120])
+
+    
+
+    #Info Slot
+    pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
+
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
