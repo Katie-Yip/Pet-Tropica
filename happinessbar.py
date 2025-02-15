@@ -13,6 +13,8 @@ class HappinessBar():
         ratio = self.hp / self.max_hp
         pygame.draw.rect(surface, "red", (self.x, self.y, self.w, self.h))  # green
         pygame.draw.rect(surface, (119,221,119), (self.x, self.y, self.w * ratio, self.h))  # red
+        pygame.draw.rect(surface, "black", (self.x, self.y, self.w, self.h), 3)  # The '3' is the width of the border
+
 
     def set_health(self, health):
         """ Set the health value directly. """

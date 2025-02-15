@@ -25,7 +25,7 @@ BROWN_FLR = (92, 64, 51)
 
 #FOR CLOCK
 next_step_time = 0
-time_interval = 5
+time_interval = 1
 start_ticks = pygame.time.get_ticks()
 
 
@@ -80,7 +80,7 @@ while not done:
     # --- Game logic should go here
     # -- CLOCK --
   
-    current_time = (pygame.time.get_ticks()-start_ticks)/1000
+    current_time = (pygame.time.get_ticks()-start_ticks)/6000
     if current_time > next_step_time:
         next_step_time += time_interval
         happiness_bar.decrease_health(20)
