@@ -52,7 +52,7 @@ screen = pygame.display.set_mode(size)
  
 pygame.display.set_caption("Pet Tropica")
 
-happiness_bar = happinessbar.HappinessBar(50,50,300,30,100)
+happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
  
 # Loop until the user clicks the close button.
 done = False
