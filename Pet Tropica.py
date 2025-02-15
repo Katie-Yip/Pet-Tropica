@@ -42,7 +42,8 @@ def baseBG():
 
     #CAT
     cat = pygame.image.load("basecat.png")
-    screen.blit(cat, (60, 50))
+    resized_cat = pygame.transform.scale(cat, (300, 250))
+    screen.blit(resized_cat, (105, 150))
 
 
  
