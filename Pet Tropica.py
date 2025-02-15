@@ -46,6 +46,12 @@ def baseBG():
     #Info Slot
     pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
 
+    #CAT
+    cat = pygame.image.load("basecat.png")
+    resized_cat = pygame.transform.scale(cat, (300, 250))
+    screen.blit(resized_cat, (105, 150))
+
+
  
 # Set the width and height of the screen [width, height]
 size = (480, 640)
