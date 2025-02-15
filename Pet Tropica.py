@@ -83,7 +83,7 @@ while not done:
     current_time = (pygame.time.get_ticks()-start_ticks)/1000
     if current_time > next_step_time:
         next_step_time += time_interval
-        happiness_bar.decrease_health(40)
+        happiness_bar.decrease_health(20)
         print(current_time)
 
 
