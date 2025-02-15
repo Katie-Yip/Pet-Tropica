@@ -10,6 +10,7 @@
 """
  
 import pygame
+import happinessbar
  
 # Define some colors
 BLACK = (0, 0, 0)
