@@ -10,6 +10,7 @@
 """
  
 import pygame
+import datetime
  
 # Define some colors
 BLACK = (0, 0, 0)
@@ -19,7 +20,13 @@ RED = (255, 0, 0)
 LIGHT_BLUE = (136, 200, 255)
 DARK_BLUE = (88, 177, 255)
 BROWN_FLR = (92, 64, 51)
- 
+
+# Variables
+
+#FOR CLOCK
+next_step_time = 0
+time_interval = 500
+
 pygame.init()
 
 def baseBG():
@@ -60,6 +67,14 @@ while not done:
             done = True
  
     # --- Game logic should go here
+    # -- CLOCK --
+  
+    current_time = pygame.time.get_ticks()
+    if current_time > next_step_time:
+        next_step_time += time_interval
+        #insert rectangle function to decrease
+
+
  
     # --- Screen-clearing code goes here
  
@@ -77,5 +92,7 @@ while not done:
  
     # --- Limit to 60 frames per second
     clock.tick(60)
+
+    #-- THIS IS FOR CLOCK -- 
  
 # Close the window and quit.
