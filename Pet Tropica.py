@@ -54,8 +54,24 @@ def baseBG():
     resized_cat = pygame.transform.scale(cat, (300, 250))
     screen.blit(resized_cat, (105, 150))
 
+def closetBG():
+    #Define Room
+    pygame.draw.polygon(screen, DARK_BLUE, [[0, 0],[480, 0],[380, 80],[100, 80]])
+    pygame.draw.polygon(screen, BROWN_FLR,[[0, 400],[480, 400],[380, 280],[100, 280]])
 
- 
+    #Room Outline
+    pygame.draw.polygon(screen, BLACK,[[0, 0],[100, 80],[100, 280],[0, 400]], 3)
+    pygame.draw.polygon(screen, BLACK,[[480, 0],[380, 80],[380, 280],[480, 400]], 3)
+    pygame.draw.polygon(screen, BLACK, [[0, 0],[480, 0],[380, 80],[100, 80]], 3)
+    pygame.draw.polygon(screen, BLACK,[[0, 400],[480, 400],[380, 280],[100, 280]], 3)
+
+    #Closet Left Side
+    #pygame.draw.polygon(screen, CLOSET_BDY,[])
+
+
+    #Info Slot
+    pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
+
 # Set the width and height of the screen [width, height]
 size = (480, 640)
 screen = pygame.display.set_mode(size)
