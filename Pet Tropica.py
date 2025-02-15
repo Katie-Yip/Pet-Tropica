@@ -10,7 +10,7 @@
 """
  
 import pygame
-import datetime
+import happinessbar
  
 # Define some colors
 BLACK = (0, 0, 0)
@@ -58,6 +58,8 @@ size = (480, 640)
 screen = pygame.display.set_mode(size)
  
 pygame.display.set_caption("Pet Tropica")
+
+happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
  
 # Loop until the user clicks the close button.
 done = False
@@ -91,9 +93,13 @@ while not done:
     # If you want a background image, replace this clear with blit'ing the
     # background image.
     screen.fill(LIGHT_BLUE)
+
+
  
     # --- Drawing code should go here
     baseBG()
+    happiness_bar.draw(screen)
+
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
