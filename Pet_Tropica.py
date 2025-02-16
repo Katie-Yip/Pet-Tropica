@@ -132,16 +132,19 @@ while not done:
     # --- Drawing code should go here
 
     home_rect, clothes_rect = buttons()
+    current_cat = pygame.image.load("Images/basecat.png")
+
     if happiness_bar.get_health() > 40:
-        selected_cat_image = pygame.image.load("Images/basecat.png")
-        resized_selectedcat = pygame.transform.scale(selected_cat_image, (300, 250))
-        screen.blit(resized_selectedcat, (105,150))
+        new_cat = pygame.image.load("Images/basecat.png")
+        resized_selectedcat = pygame.transform.scale(new_cat, (150, 120))
+        baseBG(screen)
+        screen.blit(resized_selectedcat, (180, 260))
+
     else:
-        selected_cat_image = pygame.image.load("Images/tiredcat.png")
-        resized_selectedcat = pygame.transform.scale (selected_cat_image, (300, 250))
-        screen.blit(resized_selectedcat, (105,150))
-
-
+        new_cat = pygame.image.load("Images/tiredcat.png")
+        resized_selectedcat = pygame.transform.scale (new_cat, (320, 270))
+        baseBG(screen)
+        screen.blit(resized_selectedcat, (95, 150))
     # Draw happiness bar
     happiness_bar.draw(screen)
 
