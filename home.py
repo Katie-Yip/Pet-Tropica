@@ -1,4 +1,5 @@
 import pygame
+import dropdown
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -11,6 +12,10 @@ BROWN_FLR = (92, 64, 51)
 BROWN_CLT = (72, 52, 43)
 LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
+
+#FOR DROPDOWN
+options = ["thing1","thing2","thing3","thing4","thing5","thing6","thing7","thing8","thing9","thing10"]
+modes = ["easy","medium","hard"]  
 
 def baseBG(screen):
     pygame.draw.rect(screen, DARK_BLUE, [0, 0, 40, 640])
@@ -78,3 +83,36 @@ def popup(screen, popup_visible, accessory):
 
         if accessory == 0:
             screen.blit(resized_sunhat, (130, 250))
+
+def todo(screen):
+    todobutton = dropdown.Dropdown(20,440,120,30,options) 
+    todobutton2 = dropdown.Dropdown(20,500,120,30,options) 
+    todobutton3 = dropdown.Dropdown(20,560,120,30,options) 
+
+    level = dropdown.Dropdown(170,440,140,30,modes) 
+    level2 = dropdown.Dropdown(170,500,140,30,modes) 
+    level3 = dropdown.Dropdown(170,560,140,30,modes) 
+    """
+    #for font
+    font = pygame.font.SysFont('georgia', 18)
+    text1 = font.render("To Do", True, (0,0,0))
+    text2 = font.render("Level", True, (0,0,0))
+    text3 = font.render("Update", True, (0,0,0))
+
+    text1_position = (50,410)
+    text2_position = (220,410)
+    text3_position= (380,410)
+    """
+
+    #TO DO buttons
+    todobutton2.draw(screen)
+    todobutton3.draw(screen)
+    todobutton.draw(screen)
+    #mode button
+    level.draw(screen)
+    level2.draw(screen)
+    level3.draw(screen)
+
+    """screen.blit(text1, text1_position)
+    screen.blit(text2, text2_position)
+    screen.blit(text3, text3_position)"""
