@@ -43,9 +43,6 @@ def baseBG(screen):
     tiredcat = pygame.image.load("Images/tiredcat.png")
     resized_tiredcat = pygame.transform.scale(tiredcat, (300, 250))
 
-
-
-
     #for font
     font = pygame.font.SysFont('georgia', 18)
     text1 = font.render("To Do", True, (0,0,0))
@@ -101,7 +98,6 @@ def todo(screen):
     level = dropdown.Dropdown(170,440,140,30,modes) 
     level2 = dropdown.Dropdown(170,500,140,30,modes) 
     level3 = dropdown.Dropdown(170,560,140,30,modes) 
-    
 
     #TO DO buttons
     todobutton2.draw(screen)

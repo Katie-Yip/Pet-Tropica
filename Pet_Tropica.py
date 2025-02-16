@@ -12,7 +12,7 @@
 import pygame
 import happinessbar
 from home import baseBG, popup, todo
-from closet import closetBG, buttons
+from closet import closetBG
  
 # Define some colors
 BLACK = (0, 0, 0)
@@ -25,8 +25,8 @@ BROWN_FLR = (92, 64, 51)
 BROWN_CLT = (72, 52, 43)
 LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
-
-mode = 0
+BUTTON_BDY = (255, 206, 134)
+BUTTON_WRD = (161, 122, 105)
 
 # Variables
 popup_visible = False
@@ -39,6 +39,17 @@ time_interval = 1
 start_ticks = pygame.time.get_ticks()  
 
 pygame.init()
+
+def buttons():
+    home_rect = pygame.draw.rect(screen, BUTTON_BDY, [360, 600, 45, 30])
+    home_image = pygame.image.load("Images/home.png")
+    home_image = pygame.transform.scale(home_image, (45, 30))
+    screen.blit(home_image, home_rect.topleft)
+        
+    clothes_rect = pygame.draw.rect(screen, BUTTON_BDY, [420, 600, 45, 30])
+    clothes_image = pygame.image.load("Images/clothes.png") 
+    clothes_image = pygame.transform.scale(clothes_image, (45, 30))
+    screen.blit(clothes_image, clothes_rect.topleft)
 
 # Set the width and height of the screen [width, height]
 size = (480, 640)
@@ -57,11 +68,17 @@ clock = pygame.time.Clock()
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
+    mouse_pos = pygame.mouse.get_pos()
+    mouse_clicked = False
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
         if event.type == pygame.KEYDOWN:
             popup_visible = False  # Hide the popup when any key is pressed
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_clicked = True
+    
  
     # --- Game logic should go here
     
@@ -87,6 +104,7 @@ while not done:
 
     # --- Drawing code should go here
     baseBG(screen)
+    buttons()
 
     #draw happiness bar
     happiness_bar.draw(screen)
