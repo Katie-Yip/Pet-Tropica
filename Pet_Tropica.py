@@ -57,7 +57,7 @@ todobutton3 = dropdown.Dropdown(20,560,120,30,options)
 level = dropdown.Dropdown(170,440,140,30,modes) 
 level2 = dropdown.Dropdown(170,500,140,30,modes) 
 level3 = dropdown.Dropdown(170,560,140,30,modes) 
-
+"""
 #for font
 font = pygame.font.SysFont('georgia', 18)
 text1 = font.render("To Do", True, (0,0,0))
@@ -67,7 +67,7 @@ text3 = font.render("Update", True, (0,0,0))
 text1_position = (50,410)
 text2_position = (220,410)
 text3_position= (380,410)
-
+"""
 # Loop until the user clicks the close button.
 done = False
  
@@ -115,9 +115,9 @@ while not done:
     level2.draw(screen)
     level3.draw(screen)
 
-    screen.blit(text1, text1_position)
+    """screen.blit(text1, text1_position)
     screen.blit(text2, text2_position)
-    screen.blit(text3, text3_position)
+    screen.blit(text3, text3_position)"""
 
     popup(screen, popup_visible, accessory)
 

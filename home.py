@@ -34,6 +34,20 @@ def baseBG(screen):
     resized_cat = pygame.transform.scale(cat, (300, 250))
     screen.blit(resized_cat, (105, 150))
 
+    #for font
+    font = pygame.font.SysFont('georgia', 18)
+    text1 = font.render("To Do", True, (0,0,0))
+    text2 = font.render("Level", True, (0,0,0))
+    text3 = font.render("Update", True, (0,0,0))
+
+    text1_position = (50,410)
+    text2_position = (220,410)
+    text3_position= (380,410)
+
+    screen.blit(text1, text1_position)
+    screen.blit(text2, text2_position)
+    screen.blit(text3, text3_position)
+
 def popup(screen, popup_visible, accessory):
     #SUNHAT
     sunhat = pygame.image.load("Images/cat_sunhat.png")
