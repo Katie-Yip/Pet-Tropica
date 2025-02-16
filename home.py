@@ -95,7 +95,15 @@ def popup(screen, popup_visible, accessory):
 
         if accessory == 0:
             screen.blit(resized_sunhat, (130, 250))
-        #if accessory == 1:
+        if accessory == 1:
+            screen.blit(resized_chefhat, (130, 250))
+        if accessory == 2:
+            screen.blit(resized_leaf, (130, 250))
+        if accessory == 3:
+            screen.blit(resized_tophat, (130, 250))
+        if accessory == 4:
+            screen.blit(resized_fancy, (130, 250))
+
 
 # def todo(screen):
 #     mouse_x, mouse_y = pygame.mouse.get_pos()
