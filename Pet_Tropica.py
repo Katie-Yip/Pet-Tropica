@@ -1,6 +1,7 @@
 import pygame
 import happinessbar
 import dropdown
+import modes
 import taskComplete
 from home import baseBG, popup
 from closet import closetBG, hats, cat
@@ -85,9 +86,9 @@ todobutton = dropdown.Dropdown(20,450,120,30,seen)
 todobutton2 = dropdown.Dropdown(20,490,120,30,seen) 
 todobutton3 = dropdown.Dropdown(20,530,120,30,seen) 
 
-level = dropdown.Dropdown(170,450,140,30,seen) 
-level2 = dropdown.Dropdown(170,490,140,30,seen) 
-level3 = dropdown.Dropdown(170,530,140,30,seen) 
+level = modes.Mode(170,450,140,30,seen) 
+level2 = modes.Mode(170,490,140,30,seen) 
+level3 = modes.Mode(170,530,140,30,seen) 
 
 accept = taskComplete.Task(320,450,140,30,seen)
 accept2 = taskComplete.Task(320,490,140,30,seen)

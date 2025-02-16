@@ -1,6 +1,6 @@
 import pygame
 
-class Task:
+class Mode:
     def __init__(self, x, y, w, h, seen):
         self.x = x
         self.y = y
@@ -8,12 +8,12 @@ class Task:
         self.h = h
         self.visible = seen
 
-        self.font = pygame.font.SysFont("comic sans ms", 24)
         self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
-
+        self.font = pygame.font.SysFont("comic sans ms", 24)
 
         self.clicked = False
         self.counter = 0
+
 
 
 
@@ -33,20 +33,26 @@ class Task:
             if pygame.mouse.get_pressed()[0] == 0 and self.clicked == True:
                 self.clicked = False
 
+
+
             if self.counter == 0:
-                text = self.font.render("Accept", True, "white")
+                text = self.font.render("Easy", True, "white")
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
 
             if self.counter == 1: 
-                text = self.font.render("Complete", True, "white")
+                text = self.font.render("Medium", True, "white")
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
             if self.counter == 2:
-                self.counter = 0
+                text = self.font.render("Hard", True, "white")
+                surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
+                           self.rect.y + (self.h - text.get_height()) // 2))
+            if self.counter == 3:
+                self.counter = 0              
+            
         
 
 
     def setVis(self,seen):
         self.visible = seen
-
