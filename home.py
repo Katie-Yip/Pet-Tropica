@@ -131,9 +131,9 @@ def updating(screen):
     accept2.draw(screen)
     accept3.draw(screen)
 
-    if accept.is_clicked():
+""" if accept.is_clicked():
         accept=update.Update(330,450,140,30,RED,"Accept",font,WHITE)
-
+"""
 
   
 
