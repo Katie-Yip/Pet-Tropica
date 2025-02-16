@@ -61,7 +61,7 @@ def baseBG(screen,mouse_clicked):
 
 def popup(screen, popup_visible, accessory):
     #SUNHAT
-    sunhat = pygame.image.load("Images/cat_sunhat.png")
+    sunhat = pygame.image.load("Images/sunhatcat.png")
     resized_sunhat = pygame.transform.scale(sunhat, (250, 150))
 
     #BUTTON

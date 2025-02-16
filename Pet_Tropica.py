@@ -86,6 +86,8 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pet Tropica")
 
 happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
+#this is me adding redundant code im so sorry
+mouse_clicked = False
 
 # Loop until the user clicks the close button.
 done = False
@@ -95,7 +97,7 @@ clock = pygame.time.Clock()
  
 # -------- Main Program Loop -----------
 screen.fill(LIGHT_BLUE)
-baseBG(screen)
+baseBG(screen,mouse_clicked)
 
 while not done:
     # --- Main event loop
@@ -111,7 +113,8 @@ while not done:
             mouse_clicked = True
     
     # --- Game logic should go here
-    
+
+
     # -- CLOCK --
     current_time = (pygame.time.get_ticks()-start_ticks)/6000
     if current_time > next_step_time:
@@ -129,7 +132,7 @@ while not done:
 
     if home_rect.collidepoint(mouse_pos) and mouse_clicked:
         screen.fill(LIGHT_BLUE)
-        baseBG(screen)
+        baseBG(screen,mouse_clicked)
     if clothes_rect.collidepoint(mouse_pos) and mouse_clicked:
         screen.fill(LIGHT_BLUE)
         closetBG(screen)
