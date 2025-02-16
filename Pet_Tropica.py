@@ -70,7 +70,9 @@ def buttons():
 size = (480, 640)
 screen = pygame.display.set_mode(size)
 
+
 pygame.display.set_caption("Pet Tropica")
+
 
 
 #Happiness Bar
@@ -127,11 +129,17 @@ while not done:
         print(current_time)
 
     # --- Drawing code should go here
+
     home_rect, clothes_rect = buttons()
     if happiness_bar.get_health() > 40:
-        selected_cat_image = "Images/basecat.png"
+        selected_cat_image = pygame.image.load("Images/basecat.png")
+        resized_selectedcat = pygame.transform.scale(selected_cat_image, (300, 250))
+        screen.blit(resized_selectedcat, (105,150))
     else:
-        selected_cat_image = "Images/tiredcat.png"
+        selected_cat_image = pygame.image.load("Images/tiredcat.png")
+        resized_selectedcat = pygame.transform.scale (selected_cat_image, (300, 250))
+        screen.blit(resized_selectedcat, (105,150))
+
 
     # Draw happiness bar
     happiness_bar.draw(screen)
