@@ -137,13 +137,14 @@ while not done:
 
     if happiness_bar.get_health() > 40:
         new_cat = pygame.image.load("Images/basecat.png")
-        resized_selectedcat = pygame.transform.scale(new_cat, (150, 120))
-        screen.blit(resized_selectedcat, (180, 260))
+        resized_basecat = pygame.transform.scale(new_cat, (150, 120))
+        screen.blit(resized_basecat, (180, 260))
 
     else:
         new_cat = pygame.image.load("Images/tiredcat.png")
         resized_selectedcat = pygame.transform.scale (new_cat, (320, 270))
         screen.blit(resized_selectedcat, (95, 150))
+        screen.blit(resized_basecat, (600,600))
     # Draw happiness bar
     happiness_bar.draw(screen)
 
