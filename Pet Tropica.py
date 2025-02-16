@@ -23,6 +23,7 @@ BROWN_FLR = (92, 64, 51)
 CREAM = (255, 253, 208)
 
 # Variables
+popup_visible = False
 
 #FOR CLOCK
 next_step_time = 0
@@ -66,12 +67,13 @@ def baseBG():
     #screen.blit(button_text, text_rect)
 
     #POP UP WINDOW
-    popup_font= pygame.font.Font(None, 50)
-    popup_rect = pygame.Rect(100, 70, 300, 500)
-    pygame.draw.rect(screen, CREAM, popup_rect, border_radius = 30)
-    popup_text = popup_font.render("New Accessory", True, BLACK)
-    popuptext_rect = popup_text.get_rect(midtop=(popup_rect.centerx, 90))
-    screen.blit(popup_text, popuptext_rect)
+    if popup_visible:
+        popup_font = pygame.font.Font(None, 50)
+        popup_rect = pygame.Rect(100, 70, 300, 500)
+        pygame.draw.rect(screen, CREAM, popup_rect, border_radius=30)
+        popup_text = popup_font.render("New Accessory", True, BLACK)
+        popuptext_rect = popup_text.get_rect(midtop=(popup_rect.centerx, 90))
+        screen.blit(popup_text, popuptext_rect)
 
  
 # Set the width and height of the screen [width, height]
@@ -94,6 +96,8 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        if event.type == pygame.KEYDOWN:
+            popup_visible = False  # Hide the popup when any key is pressed
  
     # --- Game logic should go here
     # -- CLOCK --
@@ -116,7 +120,7 @@ while not done:
     screen.fill(LIGHT_BLUE)
 
 
- 
+    
     # --- Drawing code should go here
     baseBG()
     happiness_bar.draw(screen)
