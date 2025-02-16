@@ -1,19 +1,8 @@
-"""
- Pygame base template for opening a window
- 
- Sample Python/Pygame Programs
- Simpson College Computer Science
- http://programarcadegames.com/
- http://simpson.edu/computer-science/
- 
- Explanation video: http://youtu.be/vRB_983kUMc
-"""
- 
 import pygame
 import happinessbar
 from home import baseBG, popup
 from closet import closetBG, hats, cat
- 
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -33,71 +22,65 @@ popup_visible = False
 accessory = 0
 happy = True
 
-#FOR CLOCK
+mouse_clicked = False
+
+# FOR CLOCK
 next_step_time = 0
 time_interval = 1
-start_ticks = pygame.time.get_ticks()  
+start_ticks = pygame.time.get_ticks()
 
 pygame.init()
 
+selected_cat_image = "Images/basecat.png"
+
 # Function to scale images while maintaining aspect ratio
 def scale_image(image, max_width, max_height):
-    # Get the original image dimensions
     original_width, original_height = image.get_size()
-    
-    # Calculate the scaling factor to fit within max_width and max_height
     width_ratio = max_width / original_width
     height_ratio = max_height / original_height
-    scale_factor = min(width_ratio, height_ratio)  # Use the smaller ratio to maintain aspect ratio
-
-    # Calculate new dimensions
+    scale_factor = min(width_ratio, height_ratio)
     new_width = int(original_width * scale_factor)
     new_height = int(original_height * scale_factor)
-    
-    # Scale the image
     return pygame.transform.scale(image, (new_width, new_height))
 
 def buttons():
     home_rect = pygame.draw.rect(screen, BUTTON_BDY, [360, 600, 45, 30])
-    home_image = pygame.image.load("Images/home.png") 
+    home_image = pygame.image.load("Images/home.png")
     home_image_scaled = scale_image(home_image, 40, 25)
     home_image_pos = (
-        home_rect.x + (45 - home_image_scaled.get_width()) // 2,  # Center horizontally
-        home_rect.y + (30 - home_image_scaled.get_height()) // 2  # Center vertically
+        home_rect.x + (45 - home_image_scaled.get_width()) // 2,
+        home_rect.y + (30 - home_image_scaled.get_height()) // 2
     )
     screen.blit(home_image_scaled, home_image_pos)
-        
+
     clothes_rect = pygame.draw.rect(screen, BUTTON_BDY, [420, 600, 45, 30])
-    clothes_image = pygame.image.load("Images/clothes.png") 
+    clothes_image = pygame.image.load("Images/clothes.png")
     clothes_image_scaled = scale_image(clothes_image, 40, 25)
     clothes_image_pos = (
-        clothes_rect.x + (45 - clothes_image_scaled.get_width()) // 2,  # Center horizontally
-        clothes_rect.y + (30 - clothes_image_scaled.get_height()) // 2  # Center vertically
+        clothes_rect.x + (45 - clothes_image_scaled.get_width()) // 2,
+        clothes_rect.y + (30 - clothes_image_scaled.get_height()) // 2
     )
     screen.blit(clothes_image_scaled, clothes_image_pos)
 
-    # Return the button rectangles for click detection
     return home_rect, clothes_rect
 
 # Set the width and height of the screen [width, height]
 size = (480, 640)
 screen = pygame.display.set_mode(size)
- 
+
 pygame.display.set_caption("Pet Tropica")
 
-happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
-#this is me adding redundant code im so sorry
-mouse_clicked = False
+happiness_bar = happinessbar.HappinessBar(30, 30, 200, 20, 100)
 
 # Loop until the user clicks the close button.
 done = False
- 
+
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
- 
+
 # -------- Main Program Loop -----------
 screen.fill(LIGHT_BLUE)
-baseBG(screen,mouse_clicked)
+baseBG(screen, mouse_clicked)
 
 while not done:
     # --- Main event loop
@@ -111,11 +94,11 @@ while not done:
             popup_visible = False  # Hide the popup when any key is pressed
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_clicked = True
-    
+
     # --- Game logic should go here
 
     # -- CLOCK --
-    current_time = (pygame.time.get_ticks()-start_ticks)/6000
+    current_time = (pygame.time.get_ticks() - start_ticks) / 6000
     if current_time > next_step_time:
         next_step_time += time_interval
         happiness_bar.decrease_health(20)
@@ -124,39 +107,44 @@ while not done:
     # --- Drawing code should go here
     home_rect, clothes_rect = buttons()
 
-    #draw happiness bar
+    # Draw happiness bar
     happiness_bar.draw(screen)
 
     popup(screen, popup_visible, accessory)
 
     if home_rect.collidepoint(mouse_pos) and mouse_clicked:
         screen.fill(LIGHT_BLUE)
-        baseBG(screen,mouse_clicked)
+        baseBG(screen, mouse_clicked)
     if clothes_rect.collidepoint(mouse_pos) and mouse_clicked:
         screen.fill(LIGHT_BLUE)
         closetBG(screen)
-        square1, square2, square3, square4, square5 = hats(screen)
 
-        if square1.collidepoint(mouse_pos) and mouse_clicked:
-            cat(screen, "Images/chefcat.png")
+        squares = hats(screen)  # Get the squares for collision detection
 
-        if square2.collidepoint(mouse_pos) and mouse_clicked:
-            cat(screen, "Images/fancycat.png")
-        
-        if square3.collidepoint(mouse_pos) and mouse_clicked:
-            cat(screen, "Images/leafcat.png")
-    
+        # Check if any square was clicked and update the selected cat image
+        for i, square in enumerate(squares):
+            print(f"Checking square {i}: {square}, Mouse position: {mouse_pos}")
+            if square.collidepoint(mouse_pos) and mouse_clicked:
+                print(f"Square {i} clicked!")
+                if i == 0:
+                    selected_cat_image = "Images/chefcat.png"
+                elif i == 1:
+                    selected_cat_image = "Images/fancycat.png"
+                elif i == 2:
+                    selected_cat_image = "Images/leafcat.png"
+                elif i == 3:
+                    selected_cat_image = "Images/sunhatcat.png"
+                elif i == 4:
+                    selected_cat_image = "Images/tophatcat.png"
 
-        if square4.collidepoint(mouse_pos) and mouse_clicked:
-            cat(screen, "Images/sunhatcat.png")
-
-        if square5.collidepoint(mouse_pos) and mouse_clicked:
-            cat(screen, "Images/tophatcat.png")
+        # If a cat image is selected, draw it
+        cat(screen, selected_cat_image)
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
- 
+
     # --- Limit to 60 frames per second
     clock.tick(60)
- 
+
 # Close the window and quit.
+pygame.quit()

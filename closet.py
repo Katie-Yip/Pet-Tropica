@@ -14,6 +14,11 @@ CREAM = (255, 253, 208)
 BUTTON_BDY = (255, 206, 134)
 BUTTON = (161, 122, 105)
 
+size = (480, 640)
+screen = pygame.display.set_mode(size)
+
+selected_cat_image = "Images/basecat.png"
+
 # Function to scale images while maintaining aspect ratio
 def scale_image(image, max_width, max_height):
     # Get the original image dimensions
@@ -31,10 +36,37 @@ def scale_image(image, max_width, max_height):
     # Scale the image
     return pygame.transform.scale(image, (new_width, new_height))
 
+# Function to display cat image
 def cat(screen, image):
-    cat = pygame.image.load(image)
-    resized_cat = pygame.transform.scale(cat, (300, 250))
+    cat_image = pygame.image.load(image)
+    resized_cat = pygame.transform.scale(cat_image, (300, 250))
     screen.blit(resized_cat, (105, 150))
+    
+# Function to draw and return the squares
+def hats(screen):
+    # Define positions for the squares (buttons) as Rect objects
+    square1 = pygame.Rect(60, 420, 70, 70)
+    square2 = pygame.Rect(200, 420, 70, 70)
+    square3 = pygame.Rect(340, 420, 70, 70)
+    square4 = pygame.Rect(140, 520, 70, 70)
+    square5 = pygame.Rect(280, 520, 70, 70)
+
+    # Load and scale images to fit inside the squares
+    chefhat_image = pygame.image.load("Images/chefhat.png")
+    fancy_image = pygame.image.load("Images/fancy.png")
+    leaf_image = pygame.image.load("Images/leaf.png")
+    sunhat_image = pygame.image.load("Images/sunhat.png")
+    tophat_image = pygame.image.load("Images/tophat.png")
+
+    images = [chefhat_image, fancy_image, leaf_image, sunhat_image, tophat_image]
+    squares = [square1, square2, square3, square4, square5]
+
+    for i, square in enumerate(squares):
+        img = scale_image(images[i], 60, 60)
+        screen.blit(img, (square.x + (square.width - img.get_width()) // 2, square.y + (square.height - img.get_height()) // 2))
+
+    print("Returning squares...")
+    return squares  # Return the squares for collision detection
 
 def closetBG(screen):
     #Define Room
@@ -79,57 +111,6 @@ def closetBG(screen):
     #Info Slot
     pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
 
-    cat(screen, "Images/basecat.png")
-
     hats(screen)
 
-def hats(screen):
-    # Define positions for the squares
-    # Top row (three squares)
-    square1 = pygame.draw.rect(screen, BUTTON_BDY, [60, 420, 70, 70])
-    chefhat_image = pygame.image.load("Images/chefhat.png")
-    chefhat_image_scaled = scale_image(chefhat_image, 60, 60)
-    chefhat_image_pos = (
-        square1.x + (65 - chefhat_image_scaled.get_width()) // 2,  
-        square1.y + (70 - chefhat_image_scaled.get_height()) // 2  
-    )
-    screen.blit(chefhat_image_scaled, chefhat_image_pos)
-
-    square2 = pygame.draw.rect(screen, BUTTON_BDY, [200, 420, 70, 70])
-    fancy_image = pygame.image.load("Images/fancy.png")
-    fancy_image_scaled = scale_image(fancy_image, 55, 55)
-    fancy_image_pos = (
-        square2.x + (80 - chefhat_image_scaled.get_width()) // 2,  
-        square2.y + (60 - chefhat_image_scaled.get_height()) // 2  
-    )
-    screen.blit(fancy_image_scaled, fancy_image_pos)
-
-    square3 = pygame.draw.rect(screen, BUTTON_BDY, [340, 420, 70, 70])
-    leaf_image = pygame.image.load("Images/leaf.png")
-    leaf_image_scaled = scale_image(leaf_image, 50, 50)
-    leaf_image_pos = (
-        square3.x + (80 - chefhat_image_scaled.get_width()) // 2,  
-        square3.y + (70 - chefhat_image_scaled.get_height()) // 2  
-    )
-    screen.blit(leaf_image_scaled, leaf_image_pos)
-
-    # Bottom row (two squares)
-    square4 = pygame.draw.rect(screen, BUTTON_BDY, [140, 520, 70, 70])
-    sunhat_image = pygame.image.load("Images/sunhat.png")
-    sunhat_image_scaled = scale_image(sunhat_image, 60, 60)
-    sunhat_image_pos = (
-        square4.x + (70 - chefhat_image_scaled.get_width()) // 2,  
-        square4.y + (80 - chefhat_image_scaled.get_height()) // 2  
-    )
-    screen.blit(sunhat_image_scaled, sunhat_image_pos)
-
-    square5 = pygame.draw.rect(screen, BUTTON_BDY, [280, 520, 70, 70])
-    tophat_image = pygame.image.load("Images/tophat.png")
-    tophat_image_scaled = scale_image(tophat_image, 60, 60)
-    tophat_image_pos = (
-        square5.x + (70 - tophat_image_scaled.get_width()) // 2,  
-        square5.y + (70 - tophat_image_scaled.get_height()) // 2  
-    )
-    screen.blit(tophat_image_scaled, tophat_image_pos)
-
-    return square1, square2, square3, square4, square5
+    cat(screen, selected_cat_image)
