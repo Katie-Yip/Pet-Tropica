@@ -59,8 +59,6 @@ def baseBG(screen,mouse_clicked):
     screen.blit(text3, text3_position)
 
     todo(screen,mouse_clicked)
-
-
     updating(screen,)
 
 def popup(screen, popup_visible, accessory):
