@@ -40,16 +40,44 @@ start_ticks = pygame.time.get_ticks()
 
 pygame.init()
 
+# Function to scale images while maintaining aspect ratio
+def scale_image(image, max_width, max_height):
+    # Get the original image dimensions
+    original_width, original_height = image.get_size()
+    
+    # Calculate the scaling factor to fit within max_width and max_height
+    width_ratio = max_width / original_width
+    height_ratio = max_height / original_height
+    scale_factor = min(width_ratio, height_ratio)  # Use the smaller ratio to maintain aspect ratio
+
+    # Calculate new dimensions
+    new_width = int(original_width * scale_factor)
+    new_height = int(original_height * scale_factor)
+    
+    # Scale the image
+    return pygame.transform.scale(image, (new_width, new_height))
+
 def buttons():
     home_rect = pygame.draw.rect(screen, BUTTON_BDY, [360, 600, 45, 30])
-    home_image = pygame.image.load("Images/home.png")
-    home_image = pygame.transform.scale(home_image, (45, 30))
-    screen.blit(home_image, home_rect.topleft)
+    home_image = pygame.image.load("Images/home.png") 
+    home_image_scaled = scale_image(home_image, 40, 25)
+    home_image_pos = (
+        home_rect.x + (45 - home_image_scaled.get_width()) // 2,  # Center horizontally
+        home_rect.y + (30 - home_image_scaled.get_height()) // 2  # Center vertically
+    )
+    screen.blit(home_image_scaled, home_image_pos)
         
     clothes_rect = pygame.draw.rect(screen, BUTTON_BDY, [420, 600, 45, 30])
     clothes_image = pygame.image.load("Images/clothes.png") 
-    clothes_image = pygame.transform.scale(clothes_image, (45, 30))
-    screen.blit(clothes_image, clothes_rect.topleft)
+    clothes_image_scaled = scale_image(clothes_image, 40, 25)
+    clothes_image_pos = (
+        clothes_rect.x + (45 - clothes_image_scaled.get_width()) // 2,  # Center horizontally
+        clothes_rect.y + (30 - clothes_image_scaled.get_height()) // 2  # Center vertically
+    )
+    screen.blit(clothes_image_scaled, clothes_image_pos)
+
+    # Return the button rectangles for click detection
+    return home_rect, clothes_rect
 
 # Set the width and height of the screen [width, height]
 size = (480, 640)
@@ -66,6 +94,9 @@ done = False
 clock = pygame.time.Clock()
  
 # -------- Main Program Loop -----------
+screen.fill(LIGHT_BLUE)
+baseBG(screen)
+
 while not done:
     # --- Main event loop
     mouse_pos = pygame.mouse.get_pos()
@@ -79,37 +110,29 @@ while not done:
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_clicked = True
     
-    
     # --- Game logic should go here
     
-
     # -- CLOCK --
     current_time = (pygame.time.get_ticks()-start_ticks)/6000
     if current_time > next_step_time:
         next_step_time += time_interval
         happiness_bar.decrease_health(20)
         print(current_time)
-    
-
-
-
-    # --- Screen-clearing code goes here
- 
-    # Here, we clear the screen to white. Don't put other drawing commands
-    # above this, or they will be erased with this command.
- 
-    # If you want a background image, replace this clear with blit'ing the
-    # background image.
-    screen.fill(LIGHT_BLUE)
 
     # --- Drawing code should go here
-    baseBG(screen,mouse_clicked)
-    buttons()
+    home_rect, clothes_rect = buttons()
 
     #draw happiness bar
     happiness_bar.draw(screen)
 
     popup(screen, popup_visible, accessory)
+
+    if home_rect.collidepoint(mouse_pos) and mouse_clicked:
+        screen.fill(LIGHT_BLUE)
+        baseBG(screen)
+    if clothes_rect.collidepoint(mouse_pos) and mouse_clicked:
+        screen.fill(LIGHT_BLUE)
+        closetBG(screen)
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
