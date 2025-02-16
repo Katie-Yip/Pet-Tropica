@@ -1,5 +1,6 @@
 import pygame
 import dropdown
+import update
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -58,6 +59,9 @@ def baseBG(screen,mouse_clicked):
     screen.blit(text3, text3_position)
 
     todo(screen,mouse_clicked)
+
+
+    updating(screen,)
 
 def popup(screen, popup_visible, accessory):
     #SUNHAT
@@ -119,4 +123,19 @@ def todo(screen,mouse_clicked):
         level2.check_click(mouse_x,mouse_y)
         level.check_click(mouse_x,mouse_y)
 
-     
+def updating(screen):
+    font = pygame.font.Font(None, 36)
+    accept=update.Update(330,450,140,30,GREEN,"Accept",font,WHITE)
+    accept2=update.Update(330,490,140,30,GREEN,"Accept",font,WHITE)
+    accept3=update.Update(330,530,140,30,GREEN,"Accept",font,WHITE)
+
+    accept.draw(screen)
+    accept2.draw(screen)
+    accept3.draw(screen)
+
+    if accept.is_clicked():
+        accept=update.Update(330,450,140,30,RED,"Accept",font,WHITE)
+
+
+  
+
