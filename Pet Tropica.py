@@ -89,9 +89,15 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pet Tropica")
 
 happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
-todobutton = dropdown.Dropdown(30,220,100,50,options) 
-todobutton2 = dropdown.Dropdown(30,260,100,50,options) 
-todobutton3 = dropdown.Dropdown(30,2,100,50,options) 
+
+todobutton = dropdown.Dropdown(20,440,120,30,options) 
+todobutton2 = dropdown.Dropdown(20,500,120,30,options) 
+todobutton3 = dropdown.Dropdown(20,560,120,30,options) 
+
+level = dropdown.Dropdown(170,440,140,30,modes) 
+level2 = dropdown.Dropdown(170,500,140,30,modes) 
+level3 = dropdown.Dropdown(170,560,140,30,modes) 
+
 
  #for font
 font = pygame.font.SysFont('georgia', 18)
@@ -146,9 +152,14 @@ while not done:
 
     #draw happiness bar
     happiness_bar.draw(screen)
+    #TO DO buttons
     todobutton2.draw(screen)
     todobutton3.draw(screen)
     todobutton.draw(screen)
+    #mode button
+    level.draw(screen)
+    level2.draw(screen)
+    level3.draw(screen)
 
     screen.blit(text1, text1_position)
     screen.blit(text2, text2_position)
