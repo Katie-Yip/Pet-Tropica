@@ -81,7 +81,6 @@ def baseBG():
         screen.blit(popup_text, popuptext_rect)
 
 def closetBG():
-  def closetBG():
     #Define Room
     pygame.draw.polygon(screen, DARK_BLUE, [[0, 0],[480, 0],[380, 80],[100, 80]])
     pygame.draw.polygon(screen, BROWN_FLR,[[0, 400],[480, 400],[380, 280],[100, 280]])
@@ -116,7 +115,7 @@ def closetBG():
     #Closet Middle
     pygame.draw.polygon(screen, LIGHT_BROWN_CLT,[[340, 90],[370, 70],[110, 70],[140, 90]])
     pygame.draw.polygon(screen, LIGHT_BROWN_CLT,[[140, 90],[340, 90],[340, 320],[140, 320]])
-    
+
     #Closet Middle Outline
     pygame.draw.polygon(screen, BROWN_CLT,[[340, 90],[370, 70],[110, 70],[140, 90],[140, 320]], 4)
     pygame.draw.polygon(screen, BROWN_CLT,[[140, 90],[340, 90],[140, 320],[340, 320]], 4)
@@ -146,11 +145,16 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pet Tropica")
 
 happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
-todobutton = dropdown.Dropdown(30,220,100,50,options) 
-todobutton2 = dropdown.Dropdown(30,260,100,50,options) 
-todobutton3 = dropdown.Dropdown(30,2,100,50,options) 
 
- #for font
+todobutton = dropdown.Dropdown(20,440,120,30,options) 
+todobutton2 = dropdown.Dropdown(20,500,120,30,options) 
+todobutton3 = dropdown.Dropdown(20,560,120,30,options) 
+
+level = dropdown.Dropdown(170,440,140,30,modes) 
+level2 = dropdown.Dropdown(170,500,140,30,modes) 
+level3 = dropdown.Dropdown(170,560,140,30,modes) 
+
+#for font
 font = pygame.font.SysFont('georgia', 18)
 text1 = font.render("To Do", True, (0,0,0))
 text2 = font.render("Level", True, (0,0,0))
@@ -198,9 +202,14 @@ while not done:
 
     #draw happiness bar
     happiness_bar.draw(screen)
+    #TO DO buttons
     todobutton2.draw(screen)
     todobutton3.draw(screen)
     todobutton.draw(screen)
+    #mode button
+    level.draw(screen)
+    level2.draw(screen)
+    level3.draw(screen)
 
     screen.blit(text1, text1_position)
     screen.blit(text2, text2_position)
@@ -211,6 +220,5 @@ while not done:
  
     # --- Limit to 60 frames per second
     clock.tick(60)
-
  
 # Close the window and quit.
