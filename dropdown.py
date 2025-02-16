@@ -9,7 +9,7 @@ class Dropdown:
         self.visible = seen
 
         self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
-        self.font = pygame.font.Font(None, 36)
+        self.font = pygame.font.SysFont("comic sans ms", 24)
 
         self.clicked = False
         self.counter = 0
@@ -20,7 +20,7 @@ class Dropdown:
     def draw(self,surface):
         if self.visible:
             if self.rect:
-                pygame.draw.rect(surface, (0, 255, 0), self.rect)
+                pygame.draw.rect(surface, (120, 200, 120), self.rect)
 
             pos = pygame.mouse.get_pos()
 
