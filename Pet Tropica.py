@@ -11,6 +11,7 @@
  
 import pygame
 import happinessbar
+import dropdown
  
 # Define some colors
 BLACK = (0, 0, 0)
@@ -31,6 +32,10 @@ popup_visible = False
 next_step_time = 0
 time_interval = 1
 start_ticks = pygame.time.get_ticks()
+
+#FOR DROPDOWN
+options = ["thing1","thing2","thing3","thing4","thing5","thing6","thing7","thing8","thing9","thing10"]
+modes = ["easy","medium","hard"]    
 
 pygame.init()
 
@@ -56,7 +61,27 @@ def baseBG():
     resized_cat = pygame.transform.scale(cat, (300, 250))
     screen.blit(resized_cat, (105, 150))
 
+    #BUTTON
+    font = pygame.font.Font(None, 36)
+    #accept_rect = pygame.Rect(200, 150, 200, 60)  # (x, y, width, height)
+    #button_text = font.render("Accept", True, BLACK)
+    #pygame.draw.rect(screen, LIGHT_BLUE, accept_rect, border_radius=30)  # Increase border_radius for rounder corners
+
+    # Draw text inside the button (centered)
+    #text_rect = button_text.get_rect(center=accept_rect.center)
+    #screen.blit(button_text, text_rect)
+
+    #POP UP WINDOW
+    if popup_visible:
+        popup_font = pygame.font.Font(None, 50)
+        popup_rect = pygame.Rect(100, 70, 300, 500)
+        pygame.draw.rect(screen, CREAM, popup_rect, border_radius=30)
+        popup_text = popup_font.render("New Accessory", True, BLACK)
+        popuptext_rect = popup_text.get_rect(midtop=(popup_rect.centerx, 90))
+        screen.blit(popup_text, popuptext_rect)
+
 def closetBG():
+  def closetBG():
     #Define Room
     pygame.draw.polygon(screen, DARK_BLUE, [[0, 0],[480, 0],[380, 80],[100, 80]])
     pygame.draw.polygon(screen, BROWN_FLR,[[0, 400],[480, 400],[380, 280],[100, 280]])
@@ -114,15 +139,6 @@ def closetBG():
     #text_rect = button_text.get_rect(center=accept_rect.center)
     #screen.blit(button_text, text_rect)
 
-    #POP UP WINDOW
-    if popup_visible:
-        popup_font = pygame.font.Font(None, 50)
-        popup_rect = pygame.Rect(100, 70, 300, 500)
-        pygame.draw.rect(screen, CREAM, popup_rect, border_radius=30)
-        popup_text = popup_font.render("New Accessory", True, BLACK)
-        popuptext_rect = popup_text.get_rect(midtop=(popup_rect.centerx, 90))
-        screen.blit(popup_text, popuptext_rect)
-
 # Set the width and height of the screen [width, height]
 size = (480, 640)
 screen = pygame.display.set_mode(size)
@@ -130,7 +146,20 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pet Tropica")
 
 happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
- 
+todobutton = dropdown.Dropdown(30,220,100,50,options) 
+todobutton2 = dropdown.Dropdown(30,260,100,50,options) 
+todobutton3 = dropdown.Dropdown(30,2,100,50,options) 
+
+ #for font
+font = pygame.font.SysFont('georgia', 18)
+text1 = font.render("To Do", True, (0,0,0))
+text2 = font.render("Level", True, (0,0,0))
+text3 = font.render("Update", True, (0,0,0))
+
+text1_position = (50,410)
+text2_position = (220,410)
+text3_position= (380,410)
+
 # Loop until the user clicks the close button.
 done = False
  
@@ -147,16 +176,14 @@ while not done:
             popup_visible = False  # Hide the popup when any key is pressed
  
     # --- Game logic should go here
+    
     # -- CLOCK --
-  
     current_time = (pygame.time.get_ticks()-start_ticks)/6000
     if current_time > next_step_time:
         next_step_time += time_interval
         happiness_bar.decrease_health(20)
         print(current_time)
 
-
- 
     # --- Screen-clearing code goes here
  
     # Here, we clear the screen to white. Don't put other drawing commands
@@ -167,8 +194,17 @@ while not done:
     screen.fill(LIGHT_BLUE)
 
     # --- Drawing code should go here
-    closetBG()
+    baseBG()
+
+    #draw happiness bar
     happiness_bar.draw(screen)
+    todobutton2.draw(screen)
+    todobutton3.draw(screen)
+    todobutton.draw(screen)
+
+    screen.blit(text1, text1_position)
+    screen.blit(text2, text2_position)
+    screen.blit(text3, text3_position)
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
