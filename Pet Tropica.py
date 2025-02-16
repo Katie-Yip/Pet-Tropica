@@ -10,8 +10,8 @@
 """
  
 import pygame
-
-
+import happinessbar
+ 
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -20,8 +20,16 @@ RED = (255, 0, 0)
 LIGHT_BLUE = (136, 200, 255)
 DARK_BLUE = (88, 177, 255)
 BROWN_FLR = (92, 64, 51)
-GRAY = (128, 128, 128)
 CREAM = (255, 253, 208)
+
+# Variables
+
+#FOR CLOCK
+next_step_time = 0
+time_interval = 1
+start_ticks = pygame.time.get_ticks()
+
+
 
 pygame.init()
 
@@ -71,6 +79,8 @@ size = (480, 640)
 screen = pygame.display.set_mode(size)
  
 pygame.display.set_caption("Pet Tropica")
+
+happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
  
 # Loop until the user clicks the close button.
 done = False
@@ -86,6 +96,15 @@ while not done:
             done = True
  
     # --- Game logic should go here
+    # -- CLOCK --
+  
+    current_time = (pygame.time.get_ticks()-start_ticks)/6000
+    if current_time > next_step_time:
+        next_step_time += time_interval
+        happiness_bar.decrease_health(20)
+        print(current_time)
+
+
  
     # --- Screen-clearing code goes here
  
@@ -95,13 +114,18 @@ while not done:
     # If you want a background image, replace this clear with blit'ing the
     # background image.
     screen.fill(LIGHT_BLUE)
+
+
  
     # --- Drawing code should go here
     baseBG()
+    happiness_bar.draw(screen)
+
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
     # --- Limit to 60 frames per second
     clock.tick(60)
+
  
 # Close the window and quit.
