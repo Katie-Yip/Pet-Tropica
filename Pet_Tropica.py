@@ -79,7 +79,7 @@ while not done:
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_clicked = True
     
- 
+    
     # --- Game logic should go here
     
 
@@ -103,7 +103,7 @@ while not done:
     screen.fill(LIGHT_BLUE)
 
     # --- Drawing code should go here
-    baseBG(screen)
+    baseBG(screen,mouse_clicked)
     buttons()
 
     #draw happiness bar

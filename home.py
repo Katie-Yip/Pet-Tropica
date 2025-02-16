@@ -18,7 +18,7 @@ options = ["thing1","thing2","thing3"]
 modes = ["easy","medium","hard"]  
 happy = True
 
-def baseBG(screen):
+def baseBG(screen,mouse_clicked):
     pygame.draw.rect(screen, DARK_BLUE, [0, 0, 40, 640])
     pygame.draw.rect(screen, DARK_BLUE, [80, 0, 40, 640])
     pygame.draw.rect(screen, DARK_BLUE, [160, 0, 40, 640])
@@ -57,7 +57,7 @@ def baseBG(screen):
     screen.blit(text2, text2_position)
     screen.blit(text3, text3_position)
 
-    todo(screen)
+    todo(screen,mouse_clicked)
 
 def popup(screen, popup_visible, accessory):
     #SUNHAT
@@ -90,7 +90,7 @@ def popup(screen, popup_visible, accessory):
         if accessory == 0:
             screen.blit(resized_sunhat, (130, 250))
 
-def todo(screen):
+def todo(screen,mouse_clicked):
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
     todobutton = dropdown.Dropdown(20,450,120,30,options) 
@@ -109,4 +109,14 @@ def todo(screen):
     level3.draw(screen,mouse_x,mouse_y) 
     level2.draw(screen,mouse_x,mouse_y)
     level.draw(screen,mouse_x,mouse_y)
+
+    if(mouse_clicked):
+        todobutton3.check_click(mouse_x,mouse_y)
+        todobutton2.check_click(mouse_x,mouse_y)
+        todobutton.check_click(mouse_x,mouse_y)
+
+        level3.check_click(mouse_x,mouse_y) 
+        level2.check_click(mouse_x,mouse_y)
+        level.check_click(mouse_x,mouse_y)
+
      
