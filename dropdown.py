@@ -1,15 +1,16 @@
 import pygame
 
 class Dropdown:
-    def __init__(self, x, y, w, h, seen):
+    def __init__(self, x, y, w, h, seen,level):
         self.x = x
         self.y = y
         self.w = w
         self.h = h
         self.visible = seen
+        self.level=level
 
         self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
-        self.font = pygame.font.SysFont("comic sans ms", 24)
+        self.font = pygame.font.SysFont("comic sans ms", 18)
 
         self.clicked = False
         self.counter = 0
@@ -38,24 +39,55 @@ class Dropdown:
 
 
             if self.counter == 0:
-                text = self.font.render("Dishes", True, "white")
+                if(self.level==0):
+                    text = self.font.render("Dishes", True, "white")
+                elif(self.level==1):
+                    text = self.font.render("Toilets", True, "white")
+                elif(self.level==2):
+                    text = self.font.render("2hr workout", True, "white")
+
+
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
 
             if self.counter == 1: 
-                text = self.font.render("Laundry", True, "white")
+                if(self.level==0):
+                    text = self.font.render("Laundry", True, "white")
+                elif(self.level==1):
+                    text = self.font.render("Clean desk", True, "white")
+                elif(self.level==2):
+                    text = self.font.render("Deep clean", True, "white")
+
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
             if self.counter == 2:
-                text = self.font.render("Hydrate", True, "white")
+                if(self.level==0):
+                    text = self.font.render("Hydrate", True, "white")
+                elif(self.level==1):
+                    text = self.font.render("Clean windows", True, "white")
+                elif(self.level==2):
+                    text = self.font.render("Wash car", True, "white")
+
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
             if self.counter == 3:
-                text = self.font.render("Study", True, "white")
+                if(self.level==0):
+                    text = self.font.render("cook", True, "white")
+                elif(self.level==1):
+                    text = self.font.render("Study 2 hrs", True, "white")
+                elif(self.level==2):
+                    text = self.font.render("Yard work", True, "white")
+
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                                        self.rect.y + (self.h - text.get_height()) // 2))
             if self.counter == 4:
-                text = self.font.render("Exercise", True, "white")
+                if(self.level==0):
+                    text = self.font.render("Dust", True, "white")
+                elif(self.level==1):
+                    text = self.font.render("Clean fridge", True, "white")
+                elif(self.level==2):
+                    text = self.font.render("Saw a tree", True, "white")
+
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2)) 
             if self.counter == 5:

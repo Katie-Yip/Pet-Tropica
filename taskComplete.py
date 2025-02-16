@@ -2,7 +2,7 @@ import pygame
 import happinessbar
 
 class Task:
-    def __init__(self, x, y, w, h, seen, happiness_bar):
+    def __init__(self, x, y, w, h, seen, happiness_bar,level):
         self.x = x
         self.y = y
         self.w = w
@@ -10,6 +10,7 @@ class Task:
         self.visible = seen
         #new
         self.happiness_bar = happiness_bar
+        self.level=level
 
         self.font = pygame.font.SysFont("comic sans ms", 24)
         self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
@@ -48,9 +49,12 @@ class Task:
                     self.rect.y + (self.h - text.get_height()) // 2))
             if self.counter == 2:
                 coinCondition = True
-                self.happiness_bar.increase_health(10) 
-                if self.happiness_bar.get_health == 100:
-                    print("YOU WIN")
+                if(self.level==0):
+                     self.happiness_bar.increase_health(10) 
+                elif(self.level==1):
+                    self.happiness_bar.increase_health(20) 
+                elif(self.level==2):
+                    self.happiness_bar.increase_health(30)                 
 
                 self.counter = 0
         
@@ -64,10 +68,3 @@ class Task:
 
 
 
-    """ def update_health(self):
-        if self.difficulty == "easy":
-            self.happinessbar.increase_health(10)
-        elif self.happinessbar == "medium":
-            self.happinessbar.increase_health(20)
-        elif self.difficulty == "hard":
-            self.happinessbar.increase_health(30)"""
