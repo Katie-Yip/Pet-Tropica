@@ -114,7 +114,6 @@ def closetBG(screen):
 
     hats(screen)
 
-    cat(screen, selected_cat_image)
 
       #for font
     font = pygame.font.SysFont('georgia', 14)
