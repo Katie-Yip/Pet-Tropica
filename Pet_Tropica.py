@@ -5,6 +5,7 @@ import modes
 import taskComplete
 from home import baseBG, popup
 from closet import closetBG, hats, cat
+import coins
  
 # Define some colors
 BLACK = (0, 0, 0)
@@ -24,7 +25,7 @@ BUTTON = (161, 122, 105)
 popup_visible = False
 accessory = 0
 happy = True
-coins = 0
+a_coins = 0
 
 
 mouse_clicked = False
@@ -151,7 +152,7 @@ while not done:
     coin_font = pygame.font.Font(None, 40)
     coin_rect = pygame.Rect(300, 15, 180, 50)
     pygame.draw.rect(screen, CREAM, coin_rect, border_radius=30)
-    c = str(coins)
+    c = str(a_coins)
     coin_text = coin_font.render(c, True, BLACK)
     cointext_rect = coin_text.get_rect(midtop=(coin_rect.centerx, 30))
     screen.blit(coin_text, cointext_rect)

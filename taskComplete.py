@@ -11,7 +11,6 @@ class Task:
         #new
         self.happiness_bar = happiness_bar
         self.level=level
-
         self.font = pygame.font.SysFont("comic sans ms", 24)
         self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
 
@@ -55,7 +54,6 @@ class Task:
                     self.happiness_bar.increase_health(20) 
                 elif(self.level==2):
                     self.happiness_bar.increase_health(30)                 
-
                 self.counter = 0
         
         coinCondition = False
