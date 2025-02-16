@@ -49,8 +49,7 @@ class Task:
             if self.counter == 2:
                 coinCondition = True
                 self.happiness_bar.increase_health(10) 
-                if self.happiness_bar.get_health == 100:
-                    print("YOU WIN")
+                
 
                 self.counter = 0
         
@@ -64,10 +63,3 @@ class Task:
 
 
 
-    """ def update_health(self):
-        if self.difficulty == "easy":
-            self.happinessbar.increase_health(10)
-        elif self.happinessbar == "medium":
-            self.happinessbar.increase_health(20)
-        elif self.difficulty == "hard":
-            self.happinessbar.increase_health(30)"""
