@@ -37,6 +37,17 @@ start_ticks = pygame.time.get_ticks()
 
 pygame.init()
 
+current_cat = pygame.image.load("Images/basecat.png").convert_alpha()
+tired_cat = pygame.image.load("Images/tiredcat.png").convert_alpha()
+resized_selectedcat = pygame.transform.scale(current_cat, (150, 120))
+resized_tiredcat = pygame.transform.scale(tired_cat,(100,100))
+
+catRect = resized_selectedcat.get_rect()
+catRect.topleft = (150,280)
+
+tiredRect = resized_tiredcat.get_rect()
+tiredRect.topleft = (90,220)
+
 selected_cat_image = "Images/basecat.png"
 
 # Function to scale images while maintaining aspect ratio
@@ -135,32 +146,32 @@ while not done:
 
     # --- Drawing code should go here
 
+
     home_rect, clothes_rect = buttons()
 
 
+    # current_cat = pygame.image.load("Images/basecat.png")
+
     if happiness_bar.get_health() > 40:
-        new_cat = pygame.image.load("Images/basecat.png")
-        resized_basecat = pygame.transform.scale(new_cat, (150, 120))
-        screen.blit(resized_basecat, (180, 260))
+        pygame.draw.rect(screen, BROWN_FLR, [0, 280, 480, 120])
+        catRect.topleft = (150,280)
+        tiredRect.topleft = (1000,1000)
 
     else:
-        new_cat = pygame.image.load("Images/tiredcat.png")
-        resized_selectedcat = pygame.transform.scale (new_cat, (320, 270))
-        screen.blit(resized_selectedcat, (95, 150))
+        pygame.draw.rect(screen, BROWN_FLR, [0, 280, 480, 120])
+        catRect.topleft = (1000,1000)
+        tiredRect.topleft = (150,280)
+    
 
-    font = pygame.font.SysFont('Arial', 14)
-    coin_font = pygame.font.Font(None, 40)
-    coin_rect = pygame.Rect(300, 15, 180, 50)
-    pygame.draw.rect(screen, CREAM, coin_rect, border_radius=30)
-    c = str(a_coins)
-    coin_text = coin_font.render(c, True, BLACK)
-    cointext_rect = coin_text.get_rect(midtop=(coin_rect.centerx, 30))
-    screen.blit(coin_text, cointext_rect)
-    coin = pygame.image.load("Images/coin.png")
-    resized_coin = pygame.transform.scale(coin, (40,40))
-    screen.blit(resized_coin, (310, 20))
+    pygame.draw.rect(screen,(92, 64, 51),catRect)
+    pygame.draw.rect(screen,(92, 64, 51),tiredRect)
+    screen.blit(resized_selectedcat, catRect)
+    screen.blit(resized_tiredcat, tiredRect)
 
 
+    #     new_cat = pygame.image.load("Images/tiredcat.png")
+    #     resized_selectedcat = pygame.transform.scale (new_cat, (320, 270))
+    #     screen.blit(resized_selectedcat, (95, 150))
     # Draw happiness bar
     happiness_bar.draw(screen)
 
