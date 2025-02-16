@@ -127,6 +127,7 @@ while not done:
         happiness_bar.decrease_health(20)
         print(current_time)
 
+
     # --- Drawing code should go here
     home_rect, clothes_rect = buttons()
 
@@ -144,6 +145,8 @@ while not done:
     accept.draw(screen)
     accept2.draw(screen)
     accept3.draw(screen)
+
+    
 
     popup(screen, popup_visible, accessory)
 

@@ -28,7 +28,6 @@ class Mode:
                 if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                     self.clicked = True
                     self.counter = self.counter + 1
-                    print('CLICKED')
         
             if pygame.mouse.get_pressed()[0] == 0 and self.clicked == True:
                 self.clicked = False

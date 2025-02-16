@@ -13,8 +13,10 @@ class Task:
 
 
         self.clicked = False
+        self.coinCondition = False
         self.counter = 0
-
+        self.next_step_time = 0
+        self.time_interval = 1
 
 
     def draw(self,surface):
@@ -28,7 +30,6 @@ class Task:
                 if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                     self.clicked = True
                     self.counter = self.counter + 1
-                    print('CLICKED')
         
             if pygame.mouse.get_pressed()[0] == 0 and self.clicked == True:
                 self.clicked = False
@@ -42,11 +43,17 @@ class Task:
                 text = self.font.render("Complete", True, "white")
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
+                
             if self.counter == 2:
+                coinCondition = True
                 self.counter = 0
         
-
+        coinCondition = False
 
     def setVis(self,seen):
         self.visible = seen
+
+    def getCoin(self):
+        return self.coinCondition
+
 
