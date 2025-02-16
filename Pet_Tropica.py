@@ -138,13 +138,11 @@ while not done:
     if happiness_bar.get_health() > 40:
         new_cat = pygame.image.load("Images/basecat.png")
         resized_selectedcat = pygame.transform.scale(new_cat, (150, 120))
-        baseBG(screen)
         screen.blit(resized_selectedcat, (180, 260))
 
     else:
         new_cat = pygame.image.load("Images/tiredcat.png")
         resized_selectedcat = pygame.transform.scale (new_cat, (320, 270))
-        baseBG(screen)
         screen.blit(resized_selectedcat, (95, 150))
     # Draw happiness bar
     happiness_bar.draw(screen)
@@ -199,12 +197,14 @@ while not done:
 
         squares = hats(screen)  # Get the squares for collision detection
 
+
         # Check if any square was clicked and update the selected cat image
         for i, square in enumerate(squares):
             print(f"Checking square {i}: {square}, Mouse position: {mouse_pos}")
             if square.collidepoint(mouse_pos) and mouse_clicked:
                 print(f"Square {i} clicked!")
                 if i == 0:
+                    print("IMAGE 1")
                     selected_cat_image = "Images/chefcat.png"
                 elif i == 1:
                     selected_cat_image = "Images/fancycat.png"
@@ -214,9 +214,6 @@ while not done:
                     selected_cat_image = "Images/sunhatcat.png"
                 elif i == 4:
                     selected_cat_image = "Images/tophatcat.png"
-
-        # If a cat image is selected, draw it
-        cat(screen, selected_cat_image)
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
