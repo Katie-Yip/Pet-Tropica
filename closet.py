@@ -111,6 +111,31 @@ def closetBG(screen):
     #Info Slot
     pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
 
+
     hats(screen)
 
     cat(screen, selected_cat_image)
+
+      #for font
+    font = pygame.font.SysFont('georgia', 14)
+    text1 = font.render("Chef's hat", True, (0,0,0))
+    text2 = font.render("Stach & Specs", True, (0,0,0))
+    text3 = font.render("Leaf", True, (0,0,0))
+    text4 = font.render("Sunhat", True, (0,0,0))
+    text5 = font.render("Tophat", True, (0,0,0))
+
+
+    text1_position = (50,490)
+    text2_position = (200,490)
+    text3_position= (360,490)
+    text4_position= (145,590)
+    text5_position= (280,590)
+
+    
+
+    screen.blit(text1, text1_position)
+    screen.blit(text2, text2_position)
+    screen.blit(text3, text3_position)
+    screen.blit(text4, text4_position)
+    screen.blit(text5, text5_position)
+
