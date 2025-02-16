@@ -23,7 +23,8 @@ BROWN_FLR = (92, 64, 51)
 CREAM = (255, 253, 208)
 
 # Variables
-popup_visible = False
+popup_visible = True
+accessory = 0
 
 #FOR CLOCK
 next_step_time = 0
@@ -56,6 +57,10 @@ def baseBG():
     resized_cat = pygame.transform.scale(cat, (300, 250))
     screen.blit(resized_cat, (105, 150))
 
+    #SUNHAT
+    sunhat = pygame.image.load("Images/cat_sunhat.png")
+    resized_sunhat = pygame.transform.scale(sunhat, (250, 150))
+
     #BUTTON
     font = pygame.font.Font(None, 36)
     #accept_rect = pygame.Rect(200, 150, 200, 60)  # (x, y, width, height)
@@ -68,13 +73,20 @@ def baseBG():
 
     #POP UP WINDOW
     if popup_visible:
-        popup_font = pygame.font.Font(None, 50)
+        popup_font = pygame.font.Font(None, 40)
         popup_rect = pygame.Rect(100, 70, 300, 500)
         pygame.draw.rect(screen, CREAM, popup_rect, border_radius=30)
         popup_text = popup_font.render("New Accessory", True, BLACK)
         popuptext_rect = popup_text.get_rect(midtop=(popup_rect.centerx, 90))
         screen.blit(popup_text, popuptext_rect)
 
+        exit_text = popup_font.render("Press a button to exit", True, BLACK)
+        exittext_rect = exit_text.get_rect(midtop=(popup_rect.centerx, 520))
+        screen.blit(exit_text, exittext_rect)
+
+        if accessory == 0:
+            screen.blit(resized_sunhat, (130, 250))
+        
  
 # Set the width and height of the screen [width, height]
 size = (480, 640)
