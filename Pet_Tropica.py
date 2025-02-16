@@ -82,17 +82,17 @@ happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
 #Dropdown Bars + Accept Changes
 
 seen = True 
-todobutton = dropdown.Dropdown(20,450,120,30,seen)
-todobutton2 = dropdown.Dropdown(20,490,120,30,seen) 
-todobutton3 = dropdown.Dropdown(20,530,120,30,seen) 
+todobutton = dropdown.Dropdown(20,450,120,30,seen,0)
+todobutton2 = dropdown.Dropdown(20,490,120,30,seen,1) 
+todobutton3 = dropdown.Dropdown(20,530,120,30,seen,2) 
 
-level = modes.Mode(170,450,140,30,seen) 
-level2 = modes.Mode(170,490,140,30,seen) 
-level3 = modes.Mode(170,530,140,30,seen) 
+level = modes.Mode(170,450,140,30,seen,0) 
+level2 = modes.Mode(170,490,140,30,seen,1) 
+level3 = modes.Mode(170,530,140,30,seen,2) 
 
-accept = taskComplete.Task(320,450,140,30,seen,happiness_bar)
-accept2 = taskComplete.Task(320,490,140,30,seen,happiness_bar)
-accept3 = taskComplete.Task(320,530,140,30,seen,happiness_bar)
+accept = taskComplete.Task(320,450,140,30,seen,happiness_bar,0)
+accept2 = taskComplete.Task(320,490,140,30,seen,happiness_bar,1)
+accept3 = taskComplete.Task(320,530,140,30,seen,happiness_bar,2)
 
 
 
