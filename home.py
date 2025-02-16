@@ -53,6 +53,8 @@ def baseBG(screen):
     screen.blit(text2, text2_position)
     screen.blit(text3, text3_position)
 
+    todo(screen)
+
 def popup(screen, popup_visible, accessory):
     #SUNHAT
     sunhat = pygame.image.load("Images/cat_sunhat.png")
