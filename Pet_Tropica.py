@@ -26,6 +26,8 @@ BROWN_CLT = (72, 52, 43)
 LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
 
+mode = 0
+
 # Variables
 popup_visible = True
 accessory = 0
@@ -83,8 +85,6 @@ while not done:
 
     #draw happiness bar
     happiness_bar.draw(screen)
-
-    todo(screen)
 
     popup(screen, popup_visible, accessory)
 
