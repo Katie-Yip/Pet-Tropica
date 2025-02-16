@@ -21,8 +21,10 @@ RED = (255, 0, 0)
 LIGHT_BLUE = (136, 200, 255)
 DARK_BLUE = (88, 177, 255)
 BROWN_FLR = (92, 64, 51)
+CREAM = (255, 253, 208)
 
 # Variables
+popup_visible = False
 
 #FOR CLOCK
 next_step_time = 0
@@ -56,10 +58,28 @@ def baseBG():
     pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
 
     #CAT
-    cat = pygame.image.load("basecat.png")
+    cat = pygame.image.load("Images/basecat.png")
     resized_cat = pygame.transform.scale(cat, (300, 250))
     screen.blit(resized_cat, (105, 150))
 
+    #BUTTON
+    font = pygame.font.Font(None, 36)
+    #accept_rect = pygame.Rect(200, 150, 200, 60)  # (x, y, width, height)
+    #button_text = font.render("Accept", True, BLACK)
+    #pygame.draw.rect(screen, LIGHT_BLUE, accept_rect, border_radius=30)  # Increase border_radius for rounder corners
+
+    # Draw text inside the button (centered)
+    #text_rect = button_text.get_rect(center=accept_rect.center)
+    #screen.blit(button_text, text_rect)
+
+    #POP UP WINDOW
+    if popup_visible:
+        popup_font = pygame.font.Font(None, 50)
+        popup_rect = pygame.Rect(100, 70, 300, 500)
+        pygame.draw.rect(screen, CREAM, popup_rect, border_radius=30)
+        popup_text = popup_font.render("New Accessory", True, BLACK)
+        popuptext_rect = popup_text.get_rect(midtop=(popup_rect.centerx, 90))
+        screen.blit(popup_text, popuptext_rect)
 
  
 # Set the width and height of the screen [width, height]
@@ -96,6 +116,8 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        if event.type == pygame.KEYDOWN:
+            popup_visible = False  # Hide the popup when any key is pressed
  
     # --- Game logic should go here
     # -- CLOCK --
@@ -118,7 +140,7 @@ while not done:
     screen.fill(LIGHT_BLUE)
 
 
- 
+    
     # --- Drawing code should go here
     baseBG()
 
