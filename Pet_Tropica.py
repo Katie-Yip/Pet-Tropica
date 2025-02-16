@@ -24,6 +24,8 @@ BUTTON = (161, 122, 105)
 popup_visible = False
 accessory = 0
 happy = True
+coins = 0
+
 
 mouse_clicked = False
 
@@ -133,7 +135,7 @@ while not done:
     # --- Drawing code should go here
 
     home_rect, clothes_rect = buttons()
-    current_cat = pygame.image.load("Images/basecat.png")
+
 
     if happiness_bar.get_health() > 40:
         new_cat = pygame.image.load("Images/basecat.png")
@@ -144,7 +146,20 @@ while not done:
         new_cat = pygame.image.load("Images/tiredcat.png")
         resized_selectedcat = pygame.transform.scale (new_cat, (320, 270))
         screen.blit(resized_selectedcat, (95, 150))
-        screen.blit(resized_basecat, (600,600))
+
+    font = pygame.font.SysFont('Arial', 14)
+    coin_font = pygame.font.Font(None, 40)
+    coin_rect = pygame.Rect(300, 15, 180, 50)
+    pygame.draw.rect(screen, CREAM, coin_rect, border_radius=30)
+    c = str(coins)
+    coin_text = coin_font.render(c, True, BLACK)
+    cointext_rect = coin_text.get_rect(midtop=(coin_rect.centerx, 30))
+    screen.blit(coin_text, cointext_rect)
+    coin = pygame.image.load("Images/coin.png")
+    resized_coin = pygame.transform.scale(coin, (40,40))
+    screen.blit(resized_coin, (310, 20))
+
+
     # Draw happiness bar
     happiness_bar.draw(screen)
 
