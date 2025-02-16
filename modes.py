@@ -1,6 +1,6 @@
 import pygame
 
-class Dropdown:
+class Mode:
     def __init__(self, x, y, w, h, seen):
         self.x = x
         self.y = y
@@ -36,27 +36,19 @@ class Dropdown:
 
 
             if self.counter == 0:
-                text = self.font.render("Dishes", True, "white")
+                text = self.font.render("Easy", True, "white")
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
 
             if self.counter == 1: 
-                text = self.font.render("Laundry", True, "white")
+                text = self.font.render("Medium", True, "white")
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
             if self.counter == 2:
-                text = self.font.render("Hydrate", True, "white")
+                text = self.font.render("Hard", True, "white")
                 surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
                            self.rect.y + (self.h - text.get_height()) // 2))
             if self.counter == 3:
-                text = self.font.render("Study", True, "white")
-                surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
-                                       self.rect.y + (self.h - text.get_height()) // 2))
-            if self.counter == 4:
-                text = self.font.render("Exercise", True, "white")
-                surface.blit(text, (self.rect.x + (self.w - text.get_width()) // 2, 
-                           self.rect.y + (self.h - text.get_height()) // 2)) 
-            if self.counter == 5:
                 self.counter = 0              
             
         
