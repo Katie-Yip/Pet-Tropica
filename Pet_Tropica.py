@@ -90,9 +90,9 @@ level = modes.Mode(170,450,140,30,seen)
 level2 = modes.Mode(170,490,140,30,seen) 
 level3 = modes.Mode(170,530,140,30,seen) 
 
-accept = taskComplete.Task(320,450,140,30,seen)
-accept2 = taskComplete.Task(320,490,140,30,seen)
-accept3 = taskComplete.Task(320,530,140,30,seen)
+accept = taskComplete.Task(320,450,140,30,seen,happiness_bar)
+accept2 = taskComplete.Task(320,490,140,30,seen,happiness_bar)
+accept3 = taskComplete.Task(320,530,140,30,seen,happiness_bar)
 
 
 
