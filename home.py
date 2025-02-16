@@ -1,6 +1,8 @@
 import pygame
 import dropdown
 
+from happinessbar import HappinessBar
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -15,7 +17,7 @@ CREAM = (255, 253, 208)
 
 #FOR DROPDOWN
 
-sad = True
+
 
 def baseBG(screen):
     pygame.draw.rect(screen, DARK_BLUE, [0, 0, 40, 640])
@@ -33,13 +35,6 @@ def baseBG(screen):
 
     #Info Slot
     pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
-
-    #CAT
-    cat = pygame.image.load("Images/basecat.png")
-    resized_cat = pygame.transform.scale(cat, (300, 250))
-    screen.blit(resized_cat, (105, 150))
-    tiredcat = pygame.image.load("Images/tiredcat.png")
-    resized_tiredcat = pygame.transform.scale(tiredcat, (300, 250))
 
 
     #for font
@@ -104,6 +99,7 @@ def popup(screen, popup_visible, accessory):
         if accessory == 4:
             screen.blit(resized_fancy, (130, 250))
 
+        accessory == accessory + 1
 
 # def todo(screen):
 #     mouse_x, mouse_y = pygame.mouse.get_pos()

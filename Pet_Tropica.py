@@ -121,10 +121,15 @@ while not done:
 
     # --- Drawing code should go here
     home_rect, clothes_rect = buttons()
+    if happiness_bar.get_health() > 40:
+        selected_cat_image = "Images/basecat.png"
+    else:
+        selected_cat_image = "Images/tiredcat.png"
 
     # Draw happiness bar
     happiness_bar.draw(screen)
     todobutton.draw(screen)
+
 
     popup(screen, popup_visible, accessory)
 
