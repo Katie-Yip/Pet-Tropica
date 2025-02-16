@@ -16,6 +16,7 @@ CREAM = (255, 253, 208)
 #FOR DROPDOWN
 options = ["thing1","thing2","thing3","thing4","thing5","thing6","thing7","thing8","thing9","thing10"]
 modes = ["easy","medium","hard"]  
+happy = True
 
 def baseBG(screen):
     pygame.draw.rect(screen, DARK_BLUE, [0, 0, 40, 640])
@@ -35,9 +36,15 @@ def baseBG(screen):
     pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
 
     #CAT
-    cat = pygame.image.load("Images/basecat.png")
-    resized_cat = pygame.transform.scale(cat, (300, 250))
-    screen.blit(resized_cat, (105, 150))
+    if happy:
+        cat = pygame.image.load("Images/basecat.png")
+        resized_cat = pygame.transform.scale(cat, (300, 250))
+        screen.blit(resized_cat, (105, 150))
+    tiredcat = pygame.image.load("Images/tiredcat.png")
+    resized_tiredcat = pygame.transform.scale(tiredcat, (300, 250))
+
+
+
 
     #for font
     font = pygame.font.SysFont('georgia', 18)

@@ -27,8 +27,9 @@ LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
 
 # Variables
-popup_visible = True
+popup_visible = False
 accessory = 0
+happy = True
 
 #FOR CLOCK
 next_step_time = 0
@@ -62,12 +63,16 @@ while not done:
  
     # --- Game logic should go here
     
+
     # -- CLOCK --
     current_time = (pygame.time.get_ticks()-start_ticks)/6000
     if current_time > next_step_time:
         next_step_time += time_interval
         happiness_bar.decrease_health(20)
         print(current_time)
+    
+
+
 
     # --- Screen-clearing code goes here
  
