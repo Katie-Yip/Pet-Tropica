@@ -11,6 +11,7 @@
  
 import pygame
 import happinessbar
+import dropdown
  
 # Define some colors
 BLACK = (0, 0, 0)
@@ -27,6 +28,11 @@ BROWN_FLR = (92, 64, 51)
 next_step_time = 0
 time_interval = 1
 start_ticks = pygame.time.get_ticks()
+
+#FOR DROPDOWN
+options = ["thing1","thing2","thing3","thing4","thing5","thing6","thing7","thing8","thing9","thing10"]
+modes = ["easy","medium","hard"]    
+
 
 
 
@@ -63,7 +69,21 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pet Tropica")
 
 happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
- 
+todobutton = dropdown.Dropdown(30,220,100,50,options) 
+todobutton2 = dropdown.Dropdown(30,260,100,50,options) 
+todobutton3 = dropdown.Dropdown(30,2,100,50,options) 
+
+ #for font
+font = pygame.font.SysFont('georgia', 18)
+text1 = font.render("To Do", True, (0,0,0))
+text2 = font.render("Level", True, (0,0,0))
+text3 = font.render("Update", True, (0,0,0))
+
+
+text1_position = (50,410)
+text2_position = (220,410)
+text3_position= (380,410)
+
 # Loop until the user clicks the close button.
 done = False
  
@@ -101,7 +121,18 @@ while not done:
  
     # --- Drawing code should go here
     baseBG()
+
+    #draw happiness bar
     happiness_bar.draw(screen)
+    todobutton2.draw(screen)
+    todobutton3.draw(screen)
+    todobutton.draw(screen)
+
+    screen.blit(text1, text1_position)
+    screen.blit(text2, text2_position)
+    screen.blit(text3, text3_position)
+
+    
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
