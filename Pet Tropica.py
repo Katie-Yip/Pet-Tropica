@@ -93,7 +93,7 @@ todobutton = dropdown.Dropdown(30,220,100,50,options)
 todobutton2 = dropdown.Dropdown(30,260,100,50,options) 
 todobutton3 = dropdown.Dropdown(30,2,100,50,options) 
 
- #for font
+#for font
 font = pygame.font.SysFont('georgia', 18)
 text1 = font.render("To Do", True, (0,0,0))
 text2 = font.render("Level", True, (0,0,0))
