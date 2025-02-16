@@ -14,7 +14,7 @@ LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
 
 #FOR DROPDOWN
-options = ["thing1","thing2","thing3","thing4","thing5","thing6","thing7","thing8","thing9","thing10"]
+options = ["thing1","thing2","thing3"]
 modes = ["easy","medium","hard"]  
 
 def baseBG(screen):
@@ -87,13 +87,16 @@ def popup(screen, popup_visible, accessory):
             screen.blit(resized_sunhat, (130, 250))
 
 def todo(screen):
-    todobutton = dropdown.Dropdown(20,440,120,30,options) 
-    todobutton2 = dropdown.Dropdown(20,500,120,30,options) 
-    todobutton3 = dropdown.Dropdown(20,560,120,30,options) 
 
-    level = dropdown.Dropdown(170,440,140,30,modes) 
-    level2 = dropdown.Dropdown(170,500,140,30,modes) 
-    level3 = dropdown.Dropdown(170,560,140,30,modes) 
+    mouse_x, mouse_y = pygame.mouse.get_pos()
+
+    todobutton = dropdown.Dropdown(20,450,120,30,options) 
+    todobutton2 = dropdown.Dropdown(20,490,120,30,options) 
+    todobutton3 = dropdown.Dropdown(20,530,120,30,options) 
+
+    level = dropdown.Dropdown(170,450,140,30,modes) 
+    level2 = dropdown.Dropdown(170,490,140,30,modes) 
+    level3 = dropdown.Dropdown(170,530,140,30,modes) 
     """
     #for font
     font = pygame.font.SysFont('georgia', 18)
@@ -107,13 +110,14 @@ def todo(screen):
     """
 
     #TO DO buttons
-    todobutton2.draw(screen)
-    todobutton3.draw(screen)
-    todobutton.draw(screen)
+    todobutton3.draw(screen, mouse_x, mouse_y)
+    todobutton2.draw(screen, mouse_x, mouse_y)
+    todobutton.draw(screen, mouse_x, mouse_y)
     #mode button
-    level.draw(screen)
-    level2.draw(screen)
-    level3.draw(screen)
+    level3.draw(screen, mouse_x, mouse_y)
+    level2.draw(screen, mouse_x, mouse_y)
+    level.draw(screen, mouse_x, mouse_y)
+
 
     """screen.blit(text1, text1_position)
     screen.blit(text2, text2_position)

@@ -11,7 +11,7 @@
  
 import pygame
 import happinessbar
-from home import baseBG, popup, todo
+from home import baseBG, popup
 from closet import closetBG, buttons
  
 # Define some colors
@@ -59,11 +59,14 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-        if event.type == pygame.KEYDOWN:
+        elif event.type == pygame.KEYDOWN:
             popup_visible = False  # Hide the popup when any key is pressed
+        # elif event.type == pygame.MOUSEBUTTONDOWN:
+            
+
  
     # --- Game logic should go here
-    
+
     # -- CLOCK --
     current_time = (pygame.time.get_ticks()-start_ticks)/6000
     if current_time > next_step_time:
