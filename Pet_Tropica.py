@@ -11,8 +11,8 @@
  
 import pygame
 import happinessbar
-from home import baseBG, popup, todo
-from closet import closetBG
+from home import baseBG, popup
+from closet import closetBG, hats, cat
  
 # Define some colors
 BLACK = (0, 0, 0)
@@ -26,7 +26,7 @@ BROWN_CLT = (72, 52, 43)
 LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
 BUTTON_BDY = (255, 206, 134)
-BUTTON_WRD = (161, 122, 105)
+BUTTON = (161, 122, 105)
 
 # Variables
 popup_visible = False
@@ -114,7 +114,6 @@ while not done:
     
     # --- Game logic should go here
 
-
     # -- CLOCK --
     current_time = (pygame.time.get_ticks()-start_ticks)/6000
     if current_time > next_step_time:
@@ -136,6 +135,23 @@ while not done:
     if clothes_rect.collidepoint(mouse_pos) and mouse_clicked:
         screen.fill(LIGHT_BLUE)
         closetBG(screen)
+        square1, square2, square3, square4, square5 = hats(screen)
+
+        if square1.collidepoint(mouse_pos) and mouse_clicked:
+            cat(screen, "Images/chefcat.png")
+
+        if square2.collidepoint(mouse_pos) and mouse_clicked:
+            cat(screen, "Images/fancycat.png")
+        
+        if square3.collidepoint(mouse_pos) and mouse_clicked:
+            cat(screen, "Images/leafcat.png")
+    
+
+        if square4.collidepoint(mouse_pos) and mouse_clicked:
+            cat(screen, "Images/sunhatcat.png")
+
+        if square5.collidepoint(mouse_pos) and mouse_clicked:
+            cat(screen, "Images/tophatcat.png")
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
