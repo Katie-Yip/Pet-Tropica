@@ -11,7 +11,8 @@
  
 import pygame
 import happinessbar
-from home import baseBG, popup, todo
+import dropdown
+from home import baseBG, popup
 from closet import closetBG
  
 # Define some colors
@@ -85,9 +86,21 @@ screen = pygame.display.set_mode(size)
  
 pygame.display.set_caption("Pet Tropica")
 
+
+#Happiness Bar
 happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
-#this is me adding redundant code im so sorry
-mouse_clicked = False
+
+#Dropdown Bars
+
+seen = True 
+todobutton = dropdown.Dropdown(20,450,120,30,seen)
+todobutton2 = dropdown.Dropdown(20,490,120,30,seen) 
+todobutton3 = dropdown.Dropdown(20,530,120,30,seen) 
+
+level = dropdown.Dropdown(170,450,140,30,seen) 
+level2 = dropdown.Dropdown(170,490,140,30,seen) 
+level3 = dropdown.Dropdown(170,530,140,30,seen) 
+
 
 # Loop until the user clicks the close button.
 done = False
@@ -97,7 +110,7 @@ clock = pygame.time.Clock()
  
 # -------- Main Program Loop -----------
 screen.fill(LIGHT_BLUE)
-baseBG(screen,mouse_clicked)
+baseBG(screen)
 
 while not done:
     # --- Main event loop
@@ -127,14 +140,33 @@ while not done:
 
     #draw happiness bar
     happiness_bar.draw(screen)
+    todobutton.draw(screen)
 
     popup(screen, popup_visible, accessory)
 
     if home_rect.collidepoint(mouse_pos) and mouse_clicked:
         screen.fill(LIGHT_BLUE)
-        baseBG(screen,mouse_clicked)
+
+        todobutton.setVis(True)
+        todobutton2.setVis(True) 
+        todobutton3.setVis(True)
+
+        level.setVis(True) 
+        level2.setVis(True) 
+        level3.setVis(True)   
+
+        baseBG(screen)
     if clothes_rect.collidepoint(mouse_pos) and mouse_clicked:
         screen.fill(LIGHT_BLUE)
+
+        todobutton.setVis(False)
+        todobutton2.setVis(False) 
+        todobutton3.setVis(False)
+
+        level.setVis(False) 
+        level2.setVis(False) 
+        level3.setVis(False)
+
         closetBG(screen)
 
     # --- Go ahead and update the screen with what we've drawn.

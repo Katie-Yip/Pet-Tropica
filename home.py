@@ -14,11 +14,9 @@ LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
 
 #FOR DROPDOWN
-options = ["thing1","thing2","thing3"]
-modes = ["easy","medium","hard"]  
 happy = True
 
-def baseBG(screen,mouse_clicked):
+def baseBG(screen):
     pygame.draw.rect(screen, DARK_BLUE, [0, 0, 40, 640])
     pygame.draw.rect(screen, DARK_BLUE, [80, 0, 40, 640])
     pygame.draw.rect(screen, DARK_BLUE, [160, 0, 40, 640])
@@ -57,7 +55,7 @@ def baseBG(screen,mouse_clicked):
     screen.blit(text2, text2_position)
     screen.blit(text3, text3_position)
 
-    todo(screen,mouse_clicked)
+    # todo(screen)
 
 def popup(screen, popup_visible, accessory):
     #SUNHAT
@@ -90,33 +88,26 @@ def popup(screen, popup_visible, accessory):
         if accessory == 0:
             screen.blit(resized_sunhat, (130, 250))
 
-def todo(screen,mouse_clicked):
-    mouse_x, mouse_y = pygame.mouse.get_pos()
+# def todo(screen):
+#     mouse_x, mouse_y = pygame.mouse.get_pos()
 
-    todobutton = dropdown.Dropdown(20,450,120,30,options) 
-    todobutton2 = dropdown.Dropdown(20,490,120,30,options) 
-    todobutton3 = dropdown.Dropdown(20,530,120,30,options) 
+#     todobutton = dropdown.Dropdown(20,450,120,30,options) 
+#     todobutton2 = dropdown.Dropdown(20,490,120,30,options) 
+#     todobutton3 = dropdown.Dropdown(20,530,120,30,options) 
 
-    level = dropdown.Dropdown(170,450,140,30,modes) 
-    level2 = dropdown.Dropdown(170,490,140,30,modes) 
-    level3 = dropdown.Dropdown(170,530,140,30,modes) 
+#     level = dropdown.Dropdown(170,450,140,30,modes) 
+#     level2 = dropdown.Dropdown(170,490,140,30,modes) 
+#     level3 = dropdown.Dropdown(170,530,140,30,modes) 
 
-    #TO DO buttons
-    todobutton3.draw(screen,mouse_x,mouse_y)
-    todobutton2.draw(screen,mouse_x,mouse_y)
-    todobutton.draw(screen,mouse_x,mouse_y)
-    #mode button
-    level3.draw(screen,mouse_x,mouse_y) 
-    level2.draw(screen,mouse_x,mouse_y)
-    level.draw(screen,mouse_x,mouse_y)
+#     #TO DO buttons
+#     todobutton3.draw()
+#     todobutton2.draw()
+#     todobutton.draw()
+#     #mode button
+#     level3.draw() 
+#     level2.draw()
+#     level.draw()
 
-    if(mouse_clicked):
-        todobutton3.check_click(mouse_x,mouse_y)
-        todobutton2.check_click(mouse_x,mouse_y)
-        todobutton.check_click(mouse_x,mouse_y)
 
-        level3.check_click(mouse_x,mouse_y) 
-        level2.check_click(mouse_x,mouse_y)
-        level.check_click(mouse_x,mouse_y)
 
      
