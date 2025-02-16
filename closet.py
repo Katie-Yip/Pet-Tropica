@@ -59,14 +59,3 @@ def closetBG(screen):
     cat = pygame.image.load("Images/basecat.png")
     resized_cat = pygame.transform.scale(cat, (300, 250))
     screen.blit(resized_cat, (105, 150))
-
-def buttons():
-    #BUTTON
-    font = pygame.font.Font(None, 36)
-    #accept_rect = pygame.Rect(200, 150, 200, 60)  # (x, y, width, height)
-    #button_text = font.render("Accept", True, BLACK)
-    #pygame.draw.rect(screen, LIGHT_BLUE, accept_rect, border_radius=30)  # Increase border_radius for rounder corners
-
-    # Draw text inside the button (centered)
-    #text_rect = button_text.get_rect(center=accept_rect.center)
-    #screen.blit(button_text, text_rect)
