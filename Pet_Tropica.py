@@ -1,6 +1,7 @@
 import pygame
 import happinessbar
 import dropdown
+import taskComplete
 from home import baseBG, popup
 from closet import closetBG, hats, cat
  
@@ -75,7 +76,7 @@ pygame.display.set_caption("Pet Tropica")
 #Happiness Bar
 happiness_bar = happinessbar.HappinessBar(30,30,200,20,100)
 
-#Dropdown Bars
+#Dropdown Bars + Accept Changes
 
 seen = True 
 todobutton = dropdown.Dropdown(20,450,120,30,seen)
@@ -85,6 +86,12 @@ todobutton3 = dropdown.Dropdown(20,530,120,30,seen)
 level = dropdown.Dropdown(170,450,140,30,seen) 
 level2 = dropdown.Dropdown(170,490,140,30,seen) 
 level3 = dropdown.Dropdown(170,530,140,30,seen) 
+
+accept = taskComplete.Task(320,450,140,30,seen)
+accept2 = taskComplete.Task(320,490,140,30,seen)
+accept3 = taskComplete.Task(320,530,140,30,seen)
+
+
 
 
 # Loop until the user clicks the close button.
@@ -128,7 +135,18 @@ while not done:
 
     # Draw happiness bar
     happiness_bar.draw(screen)
+
     todobutton.draw(screen)
+    todobutton2.draw(screen)
+    todobutton3.draw(screen)
+
+    level.draw(screen)
+    level2.draw(screen)
+    level3.draw(screen)
+
+    accept.draw(screen)
+    accept2.draw(screen)
+    accept3.draw(screen)
 
 
     popup(screen, popup_visible, accessory)
@@ -142,7 +160,11 @@ while not done:
 
         level.setVis(True) 
         level2.setVis(True) 
-        level3.setVis(True)   
+        level3.setVis(True) 
+
+        accept.setVis(True)  
+        accept2.setVis(True)  
+        accept3.setVis(True)  
 
         baseBG(screen)
     if clothes_rect.collidepoint(mouse_pos) and mouse_clicked:
@@ -155,6 +177,10 @@ while not done:
         level.setVis(False) 
         level2.setVis(False) 
         level3.setVis(False)
+
+        accept.setVis(False)  
+        accept2.setVis(False)  
+        accept3.setVis(False)
 
         closetBG(screen)
 
