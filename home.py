@@ -14,7 +14,8 @@ LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
 
 #FOR DROPDOWN
-happy = True
+
+sad = True
 
 def baseBG(screen):
     pygame.draw.rect(screen, DARK_BLUE, [0, 0, 40, 640])
@@ -34,12 +35,12 @@ def baseBG(screen):
     pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
 
     #CAT
-    if happy:
-        cat = pygame.image.load("Images/basecat.png")
-        resized_cat = pygame.transform.scale(cat, (300, 250))
-        screen.blit(resized_cat, (105, 150))
+    cat = pygame.image.load("Images/basecat.png")
+    resized_cat = pygame.transform.scale(cat, (300, 250))
+    screen.blit(resized_cat, (105, 150))
     tiredcat = pygame.image.load("Images/tiredcat.png")
     resized_tiredcat = pygame.transform.scale(tiredcat, (300, 250))
+
 
     #for font
     font = pygame.font.SysFont('georgia', 18)
@@ -55,12 +56,19 @@ def baseBG(screen):
     screen.blit(text2, text2_position)
     screen.blit(text3, text3_position)
 
-    # todo(screen)
-
 def popup(screen, popup_visible, accessory):
     #SUNHAT
-    sunhat = pygame.image.load("Images/sunhatcat.png")
-    resized_sunhat = pygame.transform.scale(sunhat, (250, 150))
+    chefhat_image = pygame.image.load("Images/chefhat.png")
+    fancy_image = pygame.image.load("Images/fancy.png")
+    leaf_image = pygame.image.load("Images/leaf.png")
+    sunhat_image = pygame.image.load("Images/sunhat.png")
+    tophat_image = pygame.image.load("Images/tophat.png")
+
+    resized_sunhat = pygame.transform.scale(sunhat_image, (250, 150))
+    resized_chefhat = pygame.transform.scale(chefhat_image, (250, 150))
+    resized_fancy = pygame.transform.scale(fancy_image, (250,150))
+    resized_leaf = pygame.transform.scale(leaf_image,(250, 150))
+    resized_tophat = pygame.transform.scale(tophat_image,(250,150))
 
     #BUTTON
     font = pygame.font.Font(None, 36)
@@ -87,6 +95,7 @@ def popup(screen, popup_visible, accessory):
 
         if accessory == 0:
             screen.blit(resized_sunhat, (130, 250))
+        #if accessory == 1:
 
 # def todo(screen):
 #     mouse_x, mouse_y = pygame.mouse.get_pos()

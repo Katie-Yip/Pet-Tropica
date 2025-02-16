@@ -11,6 +11,62 @@ BROWN_FLR = (92, 64, 51)
 BROWN_CLT = (72, 52, 43)
 LIGHT_BROWN_CLT = (119, 82, 64)
 CREAM = (255, 253, 208)
+BUTTON_BDY = (255, 206, 134)
+BUTTON = (161, 122, 105)
+
+size = (480, 640)
+screen = pygame.display.set_mode(size)
+
+selected_cat_image = "Images/basecat.png"
+
+# Function to scale images while maintaining aspect ratio
+def scale_image(image, max_width, max_height):
+    # Get the original image dimensions
+    original_width, original_height = image.get_size()
+    
+    # Calculate the scaling factor to fit within max_width and max_height
+    width_ratio = max_width / original_width
+    height_ratio = max_height / original_height
+    scale_factor = min(width_ratio, height_ratio)  # Use the smaller ratio to maintain aspect ratio
+
+    # Calculate new dimensions
+    new_width = int(original_width * scale_factor)
+    new_height = int(original_height * scale_factor)
+    
+    # Scale the image
+    return pygame.transform.scale(image, (new_width, new_height))
+
+# Function to display cat image
+def cat(screen, image):
+    cat_image = pygame.image.load(image)
+    resized_cat = pygame.transform.scale(cat_image, (300, 250))
+    screen.blit(resized_cat, (105, 150))
+    
+# Function to draw and return the squares
+def hats(screen):
+    # Define positions for the squares (buttons) as Rect objects
+    square1 = pygame.Rect(60, 420, 70, 70)
+    square2 = pygame.Rect(200, 420, 70, 70)
+    square3 = pygame.Rect(340, 420, 70, 70)
+    square4 = pygame.Rect(140, 520, 70, 70)
+    square5 = pygame.Rect(280, 520, 70, 70)
+
+    # Load and scale images to fit inside the squares
+    chefhat_image = pygame.image.load("Images/chefhat.png")
+    fancy_image = pygame.image.load("Images/fancy.png")
+    leaf_image = pygame.image.load("Images/leaf.png")
+    sunhat_image = pygame.image.load("Images/sunhat.png")
+    tophat_image = pygame.image.load("Images/tophat.png")
+
+    images = [chefhat_image, fancy_image, leaf_image, sunhat_image, tophat_image]
+    squares = [square1, square2, square3, square4, square5]
+
+    for i, square in enumerate(squares):
+        img = scale_image(images[i], 60, 60)
+        screen.blit(img, (square.x + (square.width - img.get_width()) // 2, square.y + (square.height - img.get_height()) // 2))
+
+    print("Returning squares...")
+    return squares  # Return the squares for collision detection
 
 def closetBG(screen):
     #Define Room
@@ -55,7 +111,6 @@ def closetBG(screen):
     #Info Slot
     pygame.draw.rect(screen, WHITE, [0, 400, 480, 240])
 
-    #CAT
-    cat = pygame.image.load("Images/basecat.png")
-    resized_cat = pygame.transform.scale(cat, (300, 250))
-    screen.blit(resized_cat, (105, 150))
+    hats(screen)
+
+    cat(screen, selected_cat_image)

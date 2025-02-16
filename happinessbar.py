@@ -16,6 +16,9 @@ class HappinessBar():
         pygame.draw.rect(surface, "black", (self.x, self.y, self.w, self.h), 3)  # The '3' is the width of the border
 
 
+    def get_health(self):
+        return self.hp
+    
     def set_health(self, health):
         """ Set the health value directly. """
         self.hp = health
